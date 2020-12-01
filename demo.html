@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script type="text/javascript" src="js/index.js"></script>
+  <script type="text/javascript" src="js/dnd.js"></script>
+  <script type="text/javascript" src="js/html2canvas.js"></script>
+  <title>Demo</title>
+  <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    html,
+    body {
+      background-color: thistle;
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+
+    /* #box1{
+      width: 100%;
+      position: absolute;
+    }
+    #box2{
+      width: 100%;
+      position: absolute;
+    }
+    #box3{
+      width: 100%;
+      position: absolute;
+    } */
+    #box1{
+      height: 100%;
+      position: absolute;
+    }
+    #box2{
+      height: 100%;
+      position: absolute;
+    }
+    #box3{
+      height: 100%;
+      position: absolute;
+    }
+
+    #father1 {
+      left: 400px;
+      top:50px;
+      width: 200px;
+      height: 600px;
+      position: relative;
+      overflow: hidden;
+      border: white 1px solid;
+    
+    }
+    #father2 {
+      left: 400px;
+      top:50px;
+      width: 200px;
+      height: 600px;
+      position: relative;
+      overflow: hidden;
+      border: white 1px solid;
+    }
+    #father3 {
+      left: 400px;
+      top:50px;
+      width: 200px;
+      height: 600px;
+      position: relative;
+      overflow: hidden;
+      border: white 1px solid;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      cursor: move;
+    }
+
+    #footer {
+      height: 100px;
+      width: calc(100% - 400px);
+      background-color: cornflowerblue;
+      bottom: 0;
+      position: absolute;
+      margin-left: 400px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .update {
+      width: 100px;
+      height: 30px;
+      text-align: center;
+      line-height: 100%;
+      padding: 0.3em;
+      font: 16px Arial, sans-serif bold;
+      font-style: normal;
+      text-decoration: none;
+      margin: 2px;
+      vertical-align: text-bottom;
+      zoom: 1;
+      outline: none;
+      font-size-adjust: none;
+      font-stretch: normal;
+      border-radius: 50px;
+      box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+      text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.3);
+      color: #fefee9;
+      border: 0.2px solid #2299ff;
+      background-repeat: repeat;
+      background-size: auto;
+      background-origin: padding-box;
+      background-clip: padding-box;
+      background-color: #3399ff;
+      background: linear-gradient(to bottom, #eeeff9 0%, #3399ff 100%);
+    }
+
+    .uploadImg {
+      width: 50px;
+      height: 50px;
+      margin-left: 20px;
+      display: none;
+    }
+    /* .mainBox{
+      display:flex; 
+      justify-content: center;
+    } */
+    #root{
+      /* position:relative; */
+      /* border: white 1px solid; */
+      display: flex;
+      flex-direction: row;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="previewImg"> </div>
+  <div style="width: 400px; height: 100%; float:left;background-color: teal;z-index: 100;"></div>
+  <div>
+    <div >
+      <div id="root">
+        <div id="father1" class="droppable-box drop1">
+          <div id="box1">
+          </div>
+        </div>
+        <div id="father2" class="droppable-box drop2">
+          <div id="box2">
+          </div>
+        </div>
+        <div id="father3" class="droppable-box drop3">
+          <div id="box3">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- <button style="margin-left:400px;margin-top: 50px;" onclick="preview()">预览</button> -->
+
+  <div id="footer">
+    <input type="file" id="file" class="filepath" multiple onchange="changepic(this)"
+      accept="image/jpg,image/jpeg,image/png,image/PNG" style="margin-left: 20px;width: 75px;">
+    <!-- <button type="button" class="update" id="prompt3">上传图片</button> -->
+    <div id="preview"></div>
+    <img src="#" id="img1" class="draggable-node uploadImg" />
+    <img src="#" id="img2" class="draggable-node uploadImg" />
+    <img src="#" id="img3" class="draggable-node uploadImg" />
+    <img src="#" id="img4" class="draggable-node uploadImg" />
+    <img src="#" id="img5" class="draggable-node uploadImg" />
+    <img src="#" id="img6" class="draggable-node uploadImg" />
+    <button style="margin-left: auto;" onclick="download()">下载</button>
+  </div>
+
+  <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript">
+    var Drag = dnd.Drag
+    var Drop = dnd.Drop
+    //var draggableNodes = document.getElementsByClassName('draggable-node')
+    var box = document.getElementById("box1");
+    var fa = document.getElementById('father1');
+    var box2 = document.getElementById("box2");
+    var fa2 = document.getElementById('father2');
+    var box3 = document.getElementById("box3");
+    var fa3 = document.getElementById('father3');
+    var move1 = new move;
+    var move2 = new move;
+    var move3 = new move;
+
+    // move1.upDown(fa, box);
+    // move2.upDown(fa2, box2);
+    // move3.upDown(fa3, box3);
+    move1.leftRight(fa, box);
+    move2.leftRight(fa2, box2);
+    move3.leftRight(fa3, box3);
+    let index = 0;
+    function changepic() {
+      // $("#prompt3").css("display", "none");
+      // var reads = new FileReader();
+      var files = document.getElementById('file').files;
+      function readAndPreview(file) {
+        var reader = new FileReader();
+        reader.addEventListener("load", function () {
+          index = index + 1;
+          document.getElementById('img' + index).src = this.result;
+          $("#img" + index).css("display", "block");
+          new Drag(document.getElementById('img' + index), {
+            data: index,
+            onDragEnd: function (params) {
+              !params.target && params.methods.removeDragedNode('back')
+            }
+          })
+        }, false);
+        reader.readAsDataURL(file);
+      }
+      if (files) {
+        [].forEach.call(files, readAndPreview);
+      }
+      // for (var i = 0; i < draggableNodes.length; i++) {
+      //   new Drag(draggableNodes[i], {
+      //     data: i + 1,
+      //     onDragEnd: function (params) {
+      //       !params.target && params.methods.removeDragedNode('back')
+      //     }
+      //   })
+      // }
+    }
+  </script>
+  <script>
+    window.onload = function () {
+
+      new Drop('.drop1', {
+        onDragEnter: function (params) {
+          params.methods.showStateIcon('add')
+        },
+        onDragLeave: function (params) {
+          params.methods.hideStateIcon()
+        },
+        onDrop: function (params) {
+          if (params.enter === true) {
+            var img = document.createElement("img")
+            img.src = params.sourceNode.src
+            // new Drag(img, {
+            //   data: i + 1,
+            //   onDragEnd: function (params) {
+            //     !params.target && params.methods.removeDragedNode('back')
+            //   }
+            // })
+            if (params.el.children[0].children.length === 1) {
+              console.log(params.el.children[0].children[0])
+              params.el.children[0].removeChild(params.el.children[0].children[0])
+            }
+            params.el.children[0].appendChild(img)
+          }
+        }
+      })
+      new Drop('.drop2', {
+        onDragEnter: function (params) {
+          params.methods.showStateIcon('add')
+        },
+        onDragLeave: function (params) {
+          params.methods.hideStateIcon()
+        },
+        onDrop: function (params) {
+          if (params.enter === true) {
+            var img = document.createElement("img")
+            img.src = params.sourceNode.src
+            // new Drag(img, {
+            //   data: i + 1,
+            //   onDragEnd: function (params) {
+            //     !params.target && params.methods.removeDragedNode('back')
+            //   }
+            // })
+            if (params.el.children[0].children.length === 1) {
+              console.log(params.el.children[0].children[0])
+              params.el.children[0].removeChild(params.el.children[0].children[0])
+            }
+            params.el.children[0].appendChild(img)
+          }
+        }
+      })
+      new Drop('.drop3', {
+        onDragEnter: function (params) {
+          params.methods.showStateIcon('add')
+        },
+        onDragLeave: function (params) {
+          params.methods.hideStateIcon()
+        },
+        onDrop: function (params) {
+          if (params.enter === true) {
+            var img = document.createElement("img")
+            img.src = params.sourceNode.src
+            // new Drag(img, {
+            //   data: i + 1,
+            //   onDragEnd: function (params) {
+            //     !params.target && params.methods.removeDragedNode('back')
+            //   }
+            // })
+            if (params.el.children[0].children.length === 1) {
+              console.log(params.el.children[0].children[0])
+              params.el.children[0].removeChild(params.el.children[0].children[0])
+            }
+            params.el.children[0].appendChild(img)
+          }
+        }
+      })
+      /**
+        * 放入重新创建可拖拽元素
+        * @param  {[type]} element [description]
+        * @return {[type]}         [description]
+        */
+      function createNewDrap(element) {
+        new Drag(element, {
+          onDragEnd: function (params) {
+            console.log(params.el)
+            var parent = params.el.parentElement
+            parent.removeChild(params.el)
+          }
+        })
+      }
+    }
+
+  </script>
+  <script>
+    download = value => {//点击按钮直接下载
+      new html2canvas(document.getElementById("root")).then(function (canvas) {
+        var imgUrl = canvas.toDataURL();
+        var dom = document.createElement('a');
+        dom.setAttribute("href", imgUrl);
+        dom.setAttribute("download", "截图");
+        dom.click();
+      });
+    }
+    preview = value => {
+      new html2canvas(document.getElementById('root')).then(canvas => {
+        // canvas为转换后的Canvas对象
+        let oImg = new Image();
+        oImg.src = canvas.toDataURL();  // 导出图片
+        oImg.className = "preview"
+        document.getElementById("previewImg").appendChild(oImg);  // 将生成的图片添加到body
+      });
+    }
+
+  </script>
+
+</body>
+
+</html>

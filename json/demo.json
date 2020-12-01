@@ -1,0 +1,34 @@
+[
+    [
+      {
+        "id": 1,
+        "name": "模板1",
+        "logo":"xxx.jpg",
+        "backgroundColor": "#fff",
+        "backgroundImg": "xx.jpg",
+        "type": "1", 
+        "children": [
+          {
+            "left": 10,
+            "top": 10,
+            "bottom": 100,
+            "right": 100,
+            "backgroundImg": "xx.jpg"
+          },
+          {
+            "left": 10,
+            "top": 10,
+            "bottom": 100,
+            "right": 100,
+            "backgroundImg": "xx.jpg"
+          },
+          {
+            "left": 10,
+            "top": 10,
+            "bottom": 100,
+            "right": 100,
+            "backgroundImg": "xx.jpg"
+          }
+        ]
+      }]
+  ]
