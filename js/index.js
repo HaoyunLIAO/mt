@@ -37,9 +37,10 @@ function move(){
                 var x = oEvent.clientX -disX;//相对于鼠标落下的点 鼠标在横轴移动的距离 向左为负 向右为正
                 console.log(x)
                 x = x <= 0 ? x : 0;
-                // x = x >= fa.offsetWidth-box.offsetWidth ? x : fa.offsetWidth-box.offsetWidth;//下边界
-                // box.style.left = x + 'px';
-                box.style.right = x + 'px';
+                x = x >= fa.offsetWidth-box.offsetWidth ? x : fa.offsetWidth-box.offsetWidth;//下边界
+                box.style.left = x + 'px';
+                // console.log(box.style)
+                // box.style.right = x + 'px';
             }
             fa.onmouseleave = function () {
               fa.onmousemove=null;

@@ -42,6 +42,7 @@
     #box3{
       height: 100%;
       position: absolute;
+
     }
 
     #father1 {
@@ -74,8 +75,6 @@
     }
 
     img {
-      width: 100%;
-      height: 100%;
       cursor: move;
     }
 
@@ -244,6 +243,7 @@
           if (params.enter === true) {
             var img = document.createElement("img")
             img.src = params.sourceNode.src
+            img.style.height= '100%'
             // new Drag(img, {
             //   data: i + 1,
             //   onDragEnd: function (params) {
@@ -269,6 +269,7 @@
           if (params.enter === true) {
             var img = document.createElement("img")
             img.src = params.sourceNode.src
+            img.style.height= '100%'
             // new Drag(img, {
             //   data: i + 1,
             //   onDragEnd: function (params) {
@@ -294,6 +295,7 @@
           if (params.enter === true) {
             var img = document.createElement("img")
             img.src = params.sourceNode.src
+            img.style.height= '100%'
             // new Drag(img, {
             //   data: i + 1,
             //   onDragEnd: function (params) {
