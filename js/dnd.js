@@ -147,8 +147,6 @@ var dragStore = (_dragStore = {
    * 监听拖动开始
    */
   onDragStart: function onDragStart(data, el) {
-      console.log(data)
-      console.log(el)
     var _this = this;
 
     this._initStore();

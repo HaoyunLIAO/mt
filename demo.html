@@ -17,58 +17,14 @@
       margin: 0;
       padding: 0;
       height: 100%;
-    }
-
-    /* #box1{
-      width: 100%;
-      position: absolute;
-    }
-    #box2{
-      width: 100%;
-      position: absolute;
-    }
-    #box3{
-      width: 100%;
-      position: absolute;
-    } */
-    #box1{
-      height: 100%;
-      position: absolute;
-    }
-    #box2{
-      height: 100%;
-      position: absolute;
-    }
-    #box3{
-      height: 100%;
-      position: absolute;
-
-    }
-
-    #father1 {
-      left: 400px;
-      top:50px;
-      width: 200px;
-      height: 600px;
-      position: relative;
       overflow: hidden;
-      border: white 1px solid;
-    
     }
-    #father2 {
-      left: 400px;
-      top:50px;
-      width: 200px;
-      height: 600px;
-      position: relative;
-      overflow: hidden;
-      border: white 1px solid;
+
+    .box {
+      position: absolute;
     }
-    #father3 {
-      left: 400px;
-      top:50px;
-      width: 200px;
-      height: 600px;
+
+    .father {
       position: relative;
       overflow: hidden;
       border: white 1px solid;
@@ -90,71 +46,63 @@
       align-items: center;
     }
 
-    .update {
-      width: 100px;
-      height: 30px;
-      text-align: center;
-      line-height: 100%;
-      padding: 0.3em;
-      font: 16px Arial, sans-serif bold;
-      font-style: normal;
-      text-decoration: none;
-      margin: 2px;
-      vertical-align: text-bottom;
-      zoom: 1;
-      outline: none;
-      font-size-adjust: none;
-      font-stretch: normal;
-      border-radius: 50px;
-      box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
-      text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.3);
-      color: #fefee9;
-      border: 0.2px solid #2299ff;
-      background-repeat: repeat;
-      background-size: auto;
-      background-origin: padding-box;
-      background-clip: padding-box;
-      background-color: #3399ff;
-      background: linear-gradient(to bottom, #eeeff9 0%, #3399ff 100%);
-    }
-
     .uploadImg {
       width: 50px;
       height: 50px;
+    }
+
+    .uploadDiv {
+      width: 50px;
+      height: 50px;
       margin-left: 20px;
-      display: none;
+      position: relative;
     }
-    /* .mainBox{
-      display:flex; 
-      justify-content: center;
-    } */
-    #root{
-      /* position:relative; */
-      /* border: white 1px solid; */
-      display: flex;
-      flex-direction: row;
+
+    .moduleButton {
+      width: 30%;
+      height: 30px;
+      margin: 50px 0 30px 50px;
+      text-align: center;
+      line-height: 26px;
+      float: left;
     }
+
   </style>
 </head>
 
 <body>
   <div id="previewImg"> </div>
-  <div style="width: 400px; height: 100%; float:left;background-color: teal;z-index: 100;"></div>
+  <div style="width: 400px; height: 100%; float:left;background-color: teal;z-index: 100;">
+    <button class="moduleButton" onclick="read1()">
+      模版一
+    </button>
+    <button class="moduleButton" onclick="read2()">
+      模版二
+    </button>
+    <button class="moduleButton" onclick="read3()">
+      模版三
+    </button>
+    <button class="moduleButton" onclick="read4()">
+      模版四
+    </button>
+    <button class="moduleButton" onclick="read5()">
+      模版五
+    </button>
+    <button class="moduleButton" onclick="read6()">
+      模版六
+    </button>
+    <button class="moduleButton" onclick="read7()">
+      模版七
+    </button>
+    <button class="moduleButton" onclick="read8()">
+      模版八
+    </button>
+      <button class="moduleButton" onclick="download()">下载</button>
+  </div>
   <div>
-    <div >
+    <div>
       <div id="root">
-        <div id="father1" class="droppable-box drop1">
-          <div id="box1">
-          </div>
-        </div>
-        <div id="father2" class="droppable-box drop2">
-          <div id="box2">
-          </div>
-        </div>
-        <div id="father3" class="droppable-box drop3">
-          <div id="box3">
-          </div>
-        </div>
+        <!-- 根据模板生成 -->
       </div>
     </div>
   </div>
@@ -163,173 +111,121 @@
   <div id="footer">
     <input type="file" id="file" class="filepath" multiple onchange="changepic(this)"
       accept="image/jpg,image/jpeg,image/png,image/PNG" style="margin-left: 20px;width: 75px;">
-    <!-- <button type="button" class="update" id="prompt3">上传图片</button> -->
     <div id="preview"></div>
-    <img src="#" id="img1" class="draggable-node uploadImg" />
-    <img src="#" id="img2" class="draggable-node uploadImg" />
-    <img src="#" id="img3" class="draggable-node uploadImg" />
-    <img src="#" id="img4" class="draggable-node uploadImg" />
-    <img src="#" id="img5" class="draggable-node uploadImg" />
-    <img src="#" id="img6" class="draggable-node uploadImg" />
-    <button style="margin-left: auto;" onclick="download()">下载</button>
+    <!-- 根据上传的图片动态预览图片 -->
+  
   </div>
 
   <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
   <script type="text/javascript">
-    var Drag = dnd.Drag
-    var Drop = dnd.Drop
-    //var draggableNodes = document.getElementsByClassName('draggable-node')
-    var box = document.getElementById("box1");
-    var fa = document.getElementById('father1');
-    var box2 = document.getElementById("box2");
-    var fa2 = document.getElementById('father2');
-    var box3 = document.getElementById("box3");
-    var fa3 = document.getElementById('father3');
-    var move1 = new move;
-    var move2 = new move;
-    var move3 = new move;
-
-    // move1.upDown(fa, box);
-    // move2.upDown(fa2, box2);
-    // move3.upDown(fa3, box3);
-    move1.leftRight(fa, box);
-    move2.leftRight(fa2, box2);
-    move3.leftRight(fa3, box3);
-    let index = 0;
-    function changepic() {
-      // $("#prompt3").css("display", "none");
-      // var reads = new FileReader();
-      var files = document.getElementById('file').files;
-      function readAndPreview(file) {
-        var reader = new FileReader();
-        reader.addEventListener("load", function () {
-          index = index + 1;
-          document.getElementById('img' + index).src = this.result;
-          $("#img" + index).css("display", "block");
-          new Drag(document.getElementById('img' + index), {
-            data: index,
-            onDragEnd: function (params) {
-              !params.target && params.methods.removeDragedNode('back')
-            }
-          })
-        }, false);
-        reader.readAsDataURL(file);
-      }
-      if (files) {
-        [].forEach.call(files, readAndPreview);
-      }
-      // for (var i = 0; i < draggableNodes.length; i++) {
-      //   new Drag(draggableNodes[i], {
-      //     data: i + 1,
-      //     onDragEnd: function (params) {
-      //       !params.target && params.methods.removeDragedNode('back')
-      //     }
-      //   })
-      // }
+    var jData
+    function jsonData(result) {
+      jData = result
     }
-  </script>
-  <script>
-    window.onload = function () {
-
-      new Drop('.drop1', {
-        onDragEnter: function (params) {
-          params.methods.showStateIcon('add')
-        },
-        onDragLeave: function (params) {
-          params.methods.hideStateIcon()
-        },
-        onDrop: function (params) {
-          if (params.enter === true) {
-            var img = document.createElement("img")
-            img.src = params.sourceNode.src
-            img.style.height= '100%'
-            // new Drag(img, {
-            //   data: i + 1,
-            //   onDragEnd: function (params) {
-            //     !params.target && params.methods.removeDragedNode('back')
-            //   }
-            // })
-            if (params.el.children[0].children.length === 1) {
-              console.log(params.el.children[0].children[0])
-              params.el.children[0].removeChild(params.el.children[0].children[0])
-            }
-            params.el.children[0].appendChild(img)
-          }
+    var height,width
+    var init
+    read1 = value => {//模版一点击
+      $('#root').empty();
+      $.each(jData, function (i) {
+        if (jData[i].id === '1_1') {
+          init = new generate(jData[i].direction, jData[i].number, jData[i].children)
+          height=jData[i].height
+          width=jData[i].width
+          init.init()
         }
       })
-      new Drop('.drop2', {
-        onDragEnter: function (params) {
-          params.methods.showStateIcon('add')
-        },
-        onDragLeave: function (params) {
-          params.methods.hideStateIcon()
-        },
-        onDrop: function (params) {
-          if (params.enter === true) {
-            var img = document.createElement("img")
-            img.src = params.sourceNode.src
-            img.style.height= '100%'
-            // new Drag(img, {
-            //   data: i + 1,
-            //   onDragEnd: function (params) {
-            //     !params.target && params.methods.removeDragedNode('back')
-            //   }
-            // })
-            if (params.el.children[0].children.length === 1) {
-              console.log(params.el.children[0].children[0])
-              params.el.children[0].removeChild(params.el.children[0].children[0])
-            }
-            params.el.children[0].appendChild(img)
-          }
+    }
+    read2 = value => {//模版二点击
+      $('#root').empty();
+      $.each(jData, function (i) {
+        if (jData[i].id === '1_2') {
+          init = new generate(jData[i].direction, jData[i].number, jData[i].children)
+          height=jData[i].height
+          width=jData[i].width
+          init.init()
         }
       })
-      new Drop('.drop3', {
-        onDragEnter: function (params) {
-          params.methods.showStateIcon('add')
-        },
-        onDragLeave: function (params) {
-          params.methods.hideStateIcon()
-        },
-        onDrop: function (params) {
-          if (params.enter === true) {
-            var img = document.createElement("img")
-            img.src = params.sourceNode.src
-            img.style.height= '100%'
-            // new Drag(img, {
-            //   data: i + 1,
-            //   onDragEnd: function (params) {
-            //     !params.target && params.methods.removeDragedNode('back')
-            //   }
-            // })
-            if (params.el.children[0].children.length === 1) {
-              console.log(params.el.children[0].children[0])
-              params.el.children[0].removeChild(params.el.children[0].children[0])
-            }
-            params.el.children[0].appendChild(img)
-          }
+    }
+    read3 = value => {//模版三点击
+      $('#root').empty();
+      $.each(jData, function (i) {
+        if (jData[i].id === '1_4') {
+          init = new generate(jData[i].direction, jData[i].number, jData[i].children)
+          height=jData[i].height
+          width=jData[i].width
+          init.init()
         }
       })
-      /**
-        * 放入重新创建可拖拽元素
-        * @param  {[type]} element [description]
-        * @return {[type]}         [description]
-        */
-      function createNewDrap(element) {
-        new Drag(element, {
-          onDragEnd: function (params) {
-            console.log(params.el)
-            var parent = params.el.parentElement
-            parent.removeChild(params.el)
-          }
-        })
-      }
+    }
+    read4 = value => {//模版四点击
+      $('#root').empty();
+      $.each(jData, function (i) {
+        if (jData[i].id === '1_3') {
+          init = new generate(jData[i].direction, jData[i].number, jData[i].children)
+          height=jData[i].height
+          width=jData[i].width
+          init.init()
+        }
+      })
+    }
+    read5 = value => {//模版五点击
+      $('#root').empty();
+      $.each(jData, function (i) {
+        if (jData[i].id === '1_5') {
+          init = new generate(jData[i].direction, jData[i].number, jData[i].children)
+          height=jData[i].height
+          width=jData[i].width
+          init.init()
+        }
+      })
+    }
+    read6 = value => {//模版五点击
+      $('#root').empty();
+      $.each(jData, function (i) {
+        if (jData[i].id === '1_6') {
+          init = new generate(jData[i].direction, jData[i].number, jData[i].children)
+          height=jData[i].height
+          width=jData[i].width
+          init.init()
+        }
+      })
+    }
+    read7 = value => {//模版五点击
+      $('#root').empty();
+      $.each(jData, function (i) {
+        if (jData[i].id === '1_7') {
+          init = new generate(jData[i].direction, jData[i].number, jData[i].children)
+          height=jData[i].height
+          width=jData[i].width
+          init.init()
+        }
+      })
+    }
+    read8 = value => {//模版五点击
+      $('#root').empty();
+      $.each(jData, function (i) {
+        if (jData[i].id === '1_8') {
+          init = new generate(jData[i].direction, jData[i].number, jData[i].children)
+          height=jData[i].height
+          width=jData[i].width
+          init.init()
+        }
+      })
+    }
+    changepic = value => {
+      init.changepic()
     }
 
+    //TODO direction应该放在每一个格子中判断
   </script>
   <script>
     download = value => {//点击按钮直接下载
-      new html2canvas(document.getElementById("root")).then(function (canvas) {
+      new html2canvas(document.getElementById("root"),{
+        width:width,
+        height:height
+      }).then(function (canvas) {
         var imgUrl = canvas.toDataURL();
         var dom = document.createElement('a');
         dom.setAttribute("href", imgUrl);
@@ -347,7 +243,24 @@
       });
     }
 
+    // var timeoutID = null;
+    // $(".drop1").on('click', function (e) {
+    //   clearTimeout(timeoutID);
+    //   timeoutID = window.setTimeout(function () {
+    //     //写单击事件要干的事
+    //   }, 300);
+    // });
+    // //双击事件
+
+    // $(".drop1").on('dblclick', function (e) {
+    //   clearTimeout(timeoutID);
+    //   console.log('?????')
+    //   changepic()
+    // });
+
+
   </script>
+  <script src="json/demo.json?cb=jsonData"></script>
 
 </body>
 
