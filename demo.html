@@ -58,6 +58,46 @@
       position: relative;
     }
 
+    .uploadDiv .delete {
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      width: 50px;
+      height: 50px;
+      display: none;
+    }
+
+    .exchange {
+      /* width:auto;
+      height:auto;
+      margin-left: 20px; */
+      position: relative;
+    }
+
+    .exchangeModule0 {
+      position: relative;
+      height: 50px;
+      width: 50px;
+      z-index: 100;
+      background-color: blue;
+    }
+
+    .exchangeModule1 {
+      position: relative;
+      height: 50px;
+      width: 50px;
+      z-index: 100;
+      background-color: red;
+    }
+
+    .exchangeModule2 {
+      position: relative;
+      height: 50px;
+      width: 50px;
+      z-index: 100;
+      background-color: sandybrown;
+    }
+
     .moduleButton {
       width: 30%;
       height: 30px;
@@ -67,6 +107,18 @@
       float: left;
     }
 
+    .divX:before {
+      content: '✕';
+    }
+
+    .divX {
+      position: absolute;
+      top: -10px;
+      right: -5px;
+      cursor: pointer;
+      color: red;
+      display: none;
+    }
   </style>
 </head>
 
@@ -97,10 +149,12 @@
     <button class="moduleButton" onclick="read8()">
       模版八
     </button>
-      <button class="moduleButton" onclick="download()">下载</button>
+    <button class="moduleButton" onclick="download()">下载</button>
   </div>
   <div>
     <div>
+      <!-- <input style="width: 1000px;height: 1000px; opacity: 0; position: absolute;left:400px;" type="file" id="dbc" class="filepath"
+        multiple  accept="image/jpg,image/jpeg,image/png,image/PNG"> -->
       <div id="root">
         <!-- 根据模板生成 -->
       </div>
@@ -109,41 +163,40 @@
   <!-- <button style="margin-left:400px;margin-top: 50px;" onclick="preview()">预览</button> -->
 
   <div id="footer">
-    <input type="file" id="file" class="filepath" multiple onchange="changepic(this)"
+    <input type="file" id="file" class="filepath" multiple='true' onchange="changepic(this)"
       accept="image/jpg,image/jpeg,image/png,image/PNG" style="margin-left: 20px;width: 75px;">
     <div id="preview"></div>
     <!-- 根据上传的图片动态预览图片 -->
-  
   </div>
-
   <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
   <script type="text/javascript">
     var jData
     function jsonData(result) {
       jData = result
     }
-    var height,width
+    var height, width//获取整张图片的大小，用以下载拼图
     var init
-    read1 = value => {//模版一点击
+
+    function read1() {//模版一点击
       $('#root').empty();
       $.each(jData, function (i) {
         if (jData[i].id === '1_1') {
           init = new generate(jData[i].direction, jData[i].number, jData[i].children)
-          height=jData[i].height
-          width=jData[i].width
+          height = jData[i].height
+          width = jData[i].width
           init.init()
         }
       })
     }
+
     read2 = value => {//模版二点击
       $('#root').empty();
       $.each(jData, function (i) {
         if (jData[i].id === '1_2') {
           init = new generate(jData[i].direction, jData[i].number, jData[i].children)
-          height=jData[i].height
-          width=jData[i].width
+          height = jData[i].height
+          width = jData[i].width
           init.init()
         }
       })
@@ -153,8 +206,8 @@
       $.each(jData, function (i) {
         if (jData[i].id === '1_4') {
           init = new generate(jData[i].direction, jData[i].number, jData[i].children)
-          height=jData[i].height
-          width=jData[i].width
+          height = jData[i].height
+          width = jData[i].width
           init.init()
         }
       })
@@ -164,8 +217,8 @@
       $.each(jData, function (i) {
         if (jData[i].id === '1_3') {
           init = new generate(jData[i].direction, jData[i].number, jData[i].children)
-          height=jData[i].height
-          width=jData[i].width
+          height = jData[i].height
+          width = jData[i].width
           init.init()
         }
       })
@@ -175,41 +228,41 @@
       $.each(jData, function (i) {
         if (jData[i].id === '1_5') {
           init = new generate(jData[i].direction, jData[i].number, jData[i].children)
-          height=jData[i].height
-          width=jData[i].width
+          height = jData[i].height
+          width = jData[i].width
           init.init()
         }
       })
     }
-    read6 = value => {//模版五点击
+    read6 = value => {//模版六点击
       $('#root').empty();
       $.each(jData, function (i) {
         if (jData[i].id === '1_6') {
           init = new generate(jData[i].direction, jData[i].number, jData[i].children)
-          height=jData[i].height
-          width=jData[i].width
+          height = jData[i].height
+          width = jData[i].width
           init.init()
         }
       })
     }
-    read7 = value => {//模版五点击
+    read7 = value => {//模版七点击
       $('#root').empty();
       $.each(jData, function (i) {
         if (jData[i].id === '1_7') {
           init = new generate(jData[i].direction, jData[i].number, jData[i].children)
-          height=jData[i].height
-          width=jData[i].width
+          height = jData[i].height
+          width = jData[i].width
           init.init()
         }
       })
     }
-    read8 = value => {//模版五点击
+    read8 = value => {//模版八点击
       $('#root').empty();
       $.each(jData, function (i) {
         if (jData[i].id === '1_8') {
           init = new generate(jData[i].direction, jData[i].number, jData[i].children)
-          height=jData[i].height
-          width=jData[i].width
+          height = jData[i].height
+          width = jData[i].width
           init.init()
         }
       })
@@ -218,13 +271,12 @@
       init.changepic()
     }
 
-    //TODO direction应该放在每一个格子中判断
   </script>
   <script>
     download = value => {//点击按钮直接下载
-      new html2canvas(document.getElementById("root"),{
-        width:width,
-        height:height
+      new html2canvas(document.getElementById("root"), {
+        width: width,
+        height: height
       }).then(function (canvas) {
         var imgUrl = canvas.toDataURL();
         var dom = document.createElement('a');
@@ -243,20 +295,72 @@
       });
     }
 
-    // var timeoutID = null;
-    // $(".drop1").on('click', function (e) {
-    //   clearTimeout(timeoutID);
-    //   timeoutID = window.setTimeout(function () {
-    //     //写单击事件要干的事
-    //   }, 300);
-    // });
-    // //双击事件
+  </script>
 
-    // $(".drop1").on('dblclick', function (e) {
-    //   clearTimeout(timeoutID);
-    //   console.log('?????')
-    //   changepic()
-    // });
+  <script>
+    let fromDom = null,
+      toDom = null,
+      lastDom = null;
+
+    function handleDragStart(e, dom) {
+      console.log(dom.parentNode.children[0].children[0])
+      dom.style.width = '100%'
+      dom.style.height = '100%'
+      dom.style.backgroundImage = "url(\"" + dom.parentNode.children[0].children[0].src + "\")"
+      lastDom = fromDom = dom;
+    }
+    // //拖拽中
+    // function handleDrag() {
+    // }
+
+    function handleDrop(e, dom) {
+      //只有在可放置的元素上面松开鼠标才会触发drop事件
+      // if (fromDom == lastDom) {
+      //console.log('第一次调换')
+      //第一次调换
+      lastDom.style.width = '50px'
+      lastDom.style.height = '50px'
+      lastDom.style.backgroundImage = null
+      swapDom(lastDom, toDom);
+      lastDom = toDom;
+      // } else {
+      //   console.log('第N+1次调换')
+      //   //第N+1次调换，要先把上一个div的东西还原回去，再跟第三个div互换
+      //   //这个防止enter多次触发
+      //   if (lastDom == toDom) { return; }
+      //   swapDom(fromDom, lastDom);
+      //   swapDom(fromDom, toDom);
+      //   lastDom = toDom;
+      // }
+      fromDom = null;
+      toDom = null;
+    }
+    function handleDragEnd(e, dom) {
+      //拖拽时松开鼠标就会会触发dragend事件
+      console.log('end');
+      toDom = null;
+    }
+    function handleDragEnter(e, dom) {
+      //此时的dom 是被进入的dom
+      toDom = dom;
+    }
+    function handleDragOver(e, dom) {
+      //默认无法把元素放置到其他元素当中，所以需要prevent
+      e.preventDefault();
+      e.dataTransfer.effectAllowed = "move";
+    }
+
+    function swapDom(a, b) {
+      var aParent = a.parentNode;
+      var bParent = b.parentNode;
+      var abox = aParent.children[0]
+      var bbox = bParent.children[0]
+      if (abox && bbox) {
+        var aNode2 = abox.cloneNode(true);//aNode 没有父节点
+        bParent.replaceChild(aNode2, bbox);
+        aParent.replaceChild(bbox, abox);
+      }
+    }
 
 
   </script>
