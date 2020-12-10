@@ -301,29 +301,29 @@ jsonData([
             {
                 "left": 58,
                 "top": 96,
-                "width": 156,
-                "height": 176,
+                "width": 158,
+                "height": 177,
                 "backgroundImg": "xx.jpg"
             },
             {
                 "left": 279,
-                "top": -83,
-                "width": 156,
-                "height": 176,
+                "top": -81,
+                "width": 158,
+                "height": 177,
                 "backgroundImg": "xx.jpg"
             },
             {
-                "left": 58,
-                "top": 17,
-                "width": 156,
-                "height": 176,
+                "left": 57,
+                "top": 19,
+                "width": 158,
+                "height": 177,
                 "backgroundImg": "xx.jpg"
             },
             {
-                "left": 279,
-                "top": -162,
-                "width": 156,
-                "height": 176,
+                "left": 278,
+                "top": -158,
+                "width": 158,
+                "height": 177,
                 "backgroundImg": "xx.jpg"
             }
         ]

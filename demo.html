@@ -24,16 +24,18 @@
     }
 
     .father {
+      box-sizing: border-box;
       position: relative;
       overflow: hidden;
       border: white 1px solid;
     }
 
     img {
-      cursor: move;
+      cursor: pointer;
     }
 
     #footer {
+      
       height: 100px;
       width: calc(100% - 400px);
       background-color: cornflowerblue;
@@ -79,8 +81,8 @@
       width: 100%;
       z-index: 100;
       opacity: 0;
-      background-color: rgba(0,0,0,0.2);
-      cursor:move;
+      background-color: rgba(0, 0, 0, 0.2);
+      cursor: move;
     }
 
     .exchangeModule1 {
@@ -88,9 +90,9 @@
       height: 50px;
       width: 100%;
       z-index: 100;
-      background-color: rgba(0,0,0,0.2);
+      background-color: rgba(0, 0, 0, 0.2);
       opacity: 0;
-      cursor:move;
+      cursor: move;
     }
 
     .exchangeModule2 {
@@ -99,8 +101,8 @@
       width: 100%;
       z-index: 100;
       opacity: 0;
-      background-color: rgba(0,0,0,0.2);
-      cursor:move;
+      background-color: rgba(0, 0, 0, 0.2);
+      cursor: move;
     }
 
     .exchangeModule3 {
@@ -109,8 +111,8 @@
       width: 100%;
       z-index: 100;
       opacity: 0;
-      background-color: rgba(0,0,0,0.2);
-      cursor:move;
+      background-color: rgba(0, 0, 0, 0.2);
+      cursor: move;
     }
 
     .moduleButton {
@@ -158,7 +160,7 @@
       right: 0;
       top: 0;
       opacity: 0;
-      
+
     }
 
     .file:hover {
@@ -234,116 +236,167 @@
     var init
 
     function read1() {//模版一点击
-      $('#root').empty();
-      $.each(jData, function (i) {
-        if (jData[i].id === '1_1') {
-          init = new generate(jData[i])
-          height = jData[i].height
-          width = jData[i].width
+      var root = document.getElementById('root')
+      var rootChild = root.childNodes
+      for (var i = rootChild.length - 1; i >= 0; i--) { // 一定要倒序，正序是删不干净的，可自行尝试
+        root.removeChild(rootChild[i]);
+      }
+      for(var key in jData){
+        if(jData[key].id==='1_1'){
+          init = new generate(jData[key])
+          height = jData[key].height
+          width = jData[key].width
           init.init()
+          break
         }
-      })
+      }
     }
 
     read2 = value => {//模版二点击
-      $('#root').empty();
-      $.each(jData, function (i) {
-        if (jData[i].id === '1_2') {
-          init = new generate(jData[i])
-          height = jData[i].height
-          width = jData[i].width
+      var root = document.getElementById('root')
+      var rootChild = root.childNodes
+      for (var i = rootChild.length - 1; i >= 0; i--) { // 一定要倒序，正序是删不干净的，可自行尝试
+        root.removeChild(rootChild[i]);
+      }
+      for(var key in jData){
+        if(jData[key].id==='1_2'){
+          init = new generate(jData[key])
+          height = jData[key].height
+          width = jData[key].width
           init.init()
+          break
         }
-      })
+      }
     }
     read3 = value => {//模版三点击
-      $('#root').empty();
-      $.each(jData, function (i) {
-        if (jData[i].id === '1_4') {
-          init = new generate(jData[i])
-          height = jData[i].height
-          width = jData[i].width
+      var root = document.getElementById('root')
+      var rootChild = root.childNodes
+      for (var i = rootChild.length - 1; i >= 0; i--) { // 一定要倒序，正序是删不干净的，可自行尝试
+        root.removeChild(rootChild[i]);
+      }
+      for(var key in jData){
+        if(jData[key].id==='1_4'){
+          init = new generate(jData[key])
+          height = jData[key].height
+          width = jData[key].width
           init.init()
+          break
         }
-      })
+      }
     }
     read4 = value => {//模版四点击
-      $('#root').empty();
-      $.each(jData, function (i) {
-        if (jData[i].id === '1_3') {
-          init = new generate(jData[i])
-          height = jData[i].height
-          width = jData[i].width
+      var root = document.getElementById('root')
+      var rootChild = root.childNodes
+      for (var i = rootChild.length - 1; i >= 0; i--) { // 一定要倒序，正序是删不干净的，可自行尝试
+        root.removeChild(rootChild[i]);
+      }
+      for(var key in jData){
+        if(jData[key].id==='1_3'){
+          init = new generate(jData[key])
+          height = jData[key].height
+          width = jData[key].width
           init.init()
+          break
         }
-      })
+      }
     }
     read5 = value => {//模版五点击
-      $('#root').empty();
-      $.each(jData, function (i) {
-        if (jData[i].id === '1_5') {
-          init = new generate(jData[i])
-          height = jData[i].height
-          width = jData[i].width
+      var root = document.getElementById('root')
+      var rootChild = root.childNodes
+      for (var i = rootChild.length - 1; i >= 0; i--) { // 一定要倒序，正序是删不干净的，可自行尝试
+        root.removeChild(rootChild[i]);
+      }
+      for(var key in jData){
+        if(jData[key].id==='1_5'){
+          init = new generate(jData[key])
+          height = jData[key].height
+          width = jData[key].width
           init.init()
+          break
         }
-      })
+      }
     }
     read6 = value => {//模版六点击
-      $('#root').empty();
-      $.each(jData, function (i) {
-        if (jData[i].id === '1_6') {
-          init = new generate(jData[i])
-          height = jData[i].height
-          width = jData[i].width
+      var root = document.getElementById('root')
+      var rootChild = root.childNodes
+      for (var i = rootChild.length - 1; i >= 0; i--) { // 一定要倒序，正序是删不干净的，可自行尝试
+        root.removeChild(rootChild[i]);
+      }
+      for(var key in jData){
+        if(jData[key].id==='1_6'){
+          init = new generate(jData[key])
+          height = jData[key].height
+          width = jData[key].width
           init.init()
+          break
         }
-      })
+      }
     }
     read7 = value => {//模版七点击
-      $('#root').empty();
-      $.each(jData, function (i) {
-        if (jData[i].id === '1_7') {
-          init = new generate(jData[i])
-          height = jData[i].height
-          width = jData[i].width
+      var root = document.getElementById('root')
+      var rootChild = root.childNodes
+      for (var i = rootChild.length - 1; i >= 0; i--) { // 一定要倒序，正序是删不干净的，可自行尝试
+        root.removeChild(rootChild[i]);
+      }
+      for(var key in jData){
+        if(jData[key].id==='1_7'){
+          init = new generate(jData[key])
+          height = jData[key].height
+          width = jData[key].width
           init.init()
+          break
         }
-      })
+      }
     }
     read8 = value => {//模版八点击
-      $('#root').empty();
-      $.each(jData, function (i) {
-        if (jData[i].id === '1_8') {
-          init = new generate(jData[i])
-          height = jData[i].height
-          width = jData[i].width
+      var root = document.getElementById('root')
+      var rootChild = root.childNodes
+      for (var i = rootChild.length - 1; i >= 0; i--) { // 一定要倒序，正序是删不干净的，可自行尝试
+        root.removeChild(rootChild[i]);
+      }
+      for(var key in jData){
+        if(jData[key].id==='1_8'){
+          init = new generate(jData[key])
+          height = jData[key].height
+          width = jData[key].width
           init.init()
+          break
         }
-      })
+      }
     }
     read9 = value => {//海报模版点击
-      $('#root').empty();
-      $.each(jData, function (i) {
-        if (jData[i].id === '2_1') {
-          init = new generate(jData[i])
-          height = jData[i].height
-          width = jData[i].width
+      var root = document.getElementById('root')
+      var rootChild = root.childNodes
+      for (var i = rootChild.length - 1; i >= 0; i--) { // 一定要倒序，正序是删不干净的，可自行尝试
+        root.removeChild(rootChild[i]);
+      }
+      for(var key in jData){
+        if(jData[key].id==='2_1'){
+          init = new generate(jData[key])
+          height = jData[key].height
+          width = jData[key].width
           init.init()
+          break
         }
-      })
+      }
     }
     read10 = value => {//海报模版点击
-      $('#root').empty();
-      $.each(jData, function (i) {
-        if (jData[i].id === '2_2') {
-          init = new generate(jData[i])
-          height = jData[i].height
-          width = jData[i].width
+      var root = document.getElementById('root')
+      var rootChild = root.childNodes
+      for (var i = rootChild.length - 1; i >= 0; i--) { // 一定要倒序，正序是删不干净的，可自行尝试
+        root.removeChild(rootChild[i]);
+      }
+      for(var key in jData){
+        if(jData[key].id==='2_2'){
+          init = new generate(jData[key])
+          height = jData[key].height
+          width = jData[key].width
           init.init()
+          break
         }
-      })
+      }
     }
+    
     changepic = value => {
       init.changepic()
     }
