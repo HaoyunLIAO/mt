@@ -16,7 +16,6 @@ jsonData([
                 "top": 0,
                 "width": 600,
                 "height": 200,
-                "direction":"upDown",
                 "backgroundImg": "xx.jpg"
             },
             {
@@ -24,7 +23,6 @@ jsonData([
                 "top": 0,
                 "width": 600,
                 "height": 200,
-                "direction":"upDown",
                 "backgroundImg": "xx.jpg"
             },
             {
@@ -32,7 +30,6 @@ jsonData([
                 "top": 0,
                 "width": 600,
                 "height": 200,
-                "direction":"upDown",
                 "backgroundImg": "xx.jpg"
             }
         ]
@@ -54,7 +51,6 @@ jsonData([
                 "top": 0,
                 "width": 200,
                 "height": 600,
-                "direction":"leftRight",
                 "backgroundImg": "xx.jpg"
             },
             {
@@ -62,7 +58,6 @@ jsonData([
                 "top": 0,
                 "width": 200,
                 "height": 600,
-                "direction":"leftRight",
                 "backgroundImg": "xx.jpg"
             },
             {
@@ -70,7 +65,6 @@ jsonData([
                 "top": 0,
                 "width": 200,
                 "height": 600,
-                "direction":"leftRight",
                 "backgroundImg": "xx.jpg"
             }
         ]
@@ -92,7 +86,6 @@ jsonData([
                 "top": 0,
                 "width": 300,
                 "height": 600,
-                "direction":"leftRight",
                 "backgroundImg": "xx.jpg"
             },
             {
@@ -100,7 +93,6 @@ jsonData([
                 "top": 0,
                 "width": 300,
                 "height": 600,
-                "direction":"leftRight",
                 "backgroundImg": "xx.jpg"
             }
         ]
@@ -122,7 +114,6 @@ jsonData([
                 "top": 0,
                 "width": 600,
                 "height": 300,
-                "direction":"upDown",
                 "backgroundImg": "xx.jpg"
             },
             {
@@ -130,7 +121,6 @@ jsonData([
                 "top": 0,
                 "width": 600,
                 "height": 300,
-                "direction":"upDown",
                 "backgroundImg": "xx.jpg"
             }
         ]
@@ -152,7 +142,6 @@ jsonData([
                 "top": 0,
                 "width": 300,
                 "height": 350,
-                "direction":"leftRight",
                 "backgroundImg": "xx.jpg"
             },
             {
@@ -160,7 +149,6 @@ jsonData([
                 "top": -350,
                 "width": 300,
                 "height": 350,
-                "direction":"leftRight",
                 "backgroundImg": "xx.jpg"
             },
             {
@@ -168,7 +156,6 @@ jsonData([
                 "top": -350,
                 "width": 600,
                 "height": 300,
-                "direction":"upDown",
                 "backgroundImg": "xx.jpg"
             }
         ]
@@ -190,7 +177,6 @@ jsonData([
                 "top": 0,
                 "width": 600,
                 "height": 300,
-                "direction":"upDown",
                 "backgroundImg": "xx.jpg"
             },
             {
@@ -198,7 +184,6 @@ jsonData([
                 "top": 0,
                 "width": 300,
                 "height": 350,
-                "direction":"leftRight",
                 "backgroundImg": "xx.jpg"
             },
             {
@@ -206,7 +191,6 @@ jsonData([
                 "top": -350,
                 "width": 300,
                 "height": 350,
-                "direction":"leftRight",
                 "backgroundImg": "xx.jpg"
             }
         ]
@@ -228,7 +212,6 @@ jsonData([
                 "top": 0,
                 "width": 300,
                 "height": 600,
-                "direction":"leftRight",
                 "backgroundImg": "xx.jpg"
             },
             {
@@ -236,7 +219,6 @@ jsonData([
                 "top": -600,
                 "width": 300,
                 "height": 300,
-                "direction":"leftRight",
                 "backgroundImg": "xx.jpg"
             },
             {
@@ -244,7 +226,6 @@ jsonData([
                 "top": -600,
                 "width": 300,
                 "height": 300,
-                "direction":"leftRight",
                 "backgroundImg": "xx.jpg"
             }
         ]
@@ -259,14 +240,13 @@ jsonData([
         "type": "1",
         "number": 3,
         "width":600,
-        "height":650,
+        "height":600,
         "children": [
             {
                 "left": 0,
                 "top": 0,
                 "width": 300,
                 "height": 300,
-                "direction":"leftRight",
                 "backgroundImg": "xx.jpg"
             },
             {
@@ -274,7 +254,6 @@ jsonData([
                 "top": 0,
                 "width": 300,
                 "height": 300,
-                "direction":"leftRight",
                 "backgroundImg": "xx.jpg"
             },
             {
@@ -282,7 +261,69 @@ jsonData([
                 "top": -600,
                 "width": 300,
                 "height": 600,
-                "direction":"upDown",
+                "backgroundImg": "xx.jpg"
+            }
+        ]
+    },
+    {
+        "id": "2_1",
+        "name": "海报模板",
+        "logo": "xxx.jpg",
+        "bgColor": "#fff",
+        "src": "./img/poste.jpg",
+        "direction":"upDown",
+        "type": "2",
+        "number": 1,
+        "width":700,
+        "height":600,
+        "children": [
+            {
+                "left": 164,
+                "top": 118,
+                "width": 375,
+                "height": 365,
+                "backgroundImg": "xx.jpg"
+            }
+        ]
+    },
+    {
+        "id": "2_2",
+        "name": "海报模板",
+        "logo": "xxx.jpg",
+        "bgColor": "#fff",
+        "src": "./img/poste2.jpg",
+        "direction":"upDown",
+        "type": "2",
+        "number": 4,
+        "width":500,
+        "height":600,
+        "children": [
+            {
+                "left": 58,
+                "top": 96,
+                "width": 156,
+                "height": 176,
+                "backgroundImg": "xx.jpg"
+            },
+            {
+                "left": 279,
+                "top": -83,
+                "width": 156,
+                "height": 176,
+                "backgroundImg": "xx.jpg"
+            },
+            {
+                "left": 58,
+                "top": 17,
+                "width": 156,
+                "height": 176,
+                "backgroundImg": "xx.jpg"
+            },
+            {
+                "left": 279,
+                "top": -162,
+                "width": 156,
+                "height": 176,
                 "backgroundImg": "xx.jpg"
             }
         ]

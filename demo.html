@@ -9,11 +9,10 @@
   <script type="text/javascript" src="js/dnd.js"></script>
   <script type="text/javascript" src="js/html2canvas.js"></script>
   <title>Demo</title>
-  <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
   <style>
     html,
     body {
-      background-color: thistle;
+      background-color: sandybrown;
       margin: 0;
       padding: 0;
       height: 100%;
@@ -77,25 +76,41 @@
     .exchangeModule0 {
       position: relative;
       height: 50px;
-      width: 50px;
+      width: 100%;
       z-index: 100;
-      background-color: blue;
+      opacity: 0;
+      background-color: rgba(0,0,0,0.2);
+      cursor:move;
     }
 
     .exchangeModule1 {
       position: relative;
       height: 50px;
-      width: 50px;
+      width: 100%;
       z-index: 100;
-      background-color: red;
+      background-color: rgba(0,0,0,0.2);
+      opacity: 0;
+      cursor:move;
     }
 
     .exchangeModule2 {
       position: relative;
       height: 50px;
-      width: 50px;
+      width: 100%;
       z-index: 100;
-      background-color: sandybrown;
+      opacity: 0;
+      background-color: rgba(0,0,0,0.2);
+      cursor:move;
+    }
+
+    .exchangeModule3 {
+      position: relative;
+      height: 50px;
+      width: 100%;
+      z-index: 100;
+      opacity: 0;
+      background-color: rgba(0,0,0,0.2);
+      cursor:move;
     }
 
     .moduleButton {
@@ -118,6 +133,39 @@
       cursor: pointer;
       color: red;
       display: none;
+    }
+
+    .file {
+      position: relative;
+      display: inline-block;
+      background: #D0EEFF;
+      border: 1px solid #99D3F5;
+      border-radius: 4px;
+      padding: 4px 12px;
+      overflow: hidden;
+      color: #1E88C7;
+      text-decoration: none;
+      text-indent: 0;
+      line-height: 20px;
+      margin-left: 20px;
+      width: 86px;
+      font-size: 14px;
+    }
+
+    .file input {
+      position: absolute;
+      /* font-size: 30px; */
+      right: 0;
+      top: 0;
+      opacity: 0;
+      
+    }
+
+    .file:hover {
+      background: #AADFFD;
+      border-color: #78C3F3;
+      color: #004974;
+      text-decoration: none;
     }
   </style>
 </head>
@@ -149,6 +197,12 @@
     <button class="moduleButton" onclick="read8()">
       模版八
     </button>
+    <button class="moduleButton" onclick="read9()">
+      海报模板一
+    </button>
+    <button class="moduleButton" onclick="read10()">
+      海报模板二
+    </button>
     <button class="moduleButton" onclick="download()">下载</button>
   </div>
   <div>
@@ -160,16 +214,17 @@
       </div>
     </div>
   </div>
-  <!-- <button style="margin-left:400px;margin-top: 50px;" onclick="preview()">预览</button> -->
+  <!-- <button style="margin-left:400px;margin-top: 50px;" onclick="preview()">预览</button> style="margin-left: 20px;width: 75px;" -->
 
   <div id="footer">
-    <input type="file" id="file" class="filepath" multiple='true' onchange="changepic(this)"
-      accept="image/jpg,image/jpeg,image/png,image/PNG" style="margin-left: 20px;width: 75px;">
+    <a href="javascript:;" class="file">点击上传文件
+      <input type="file" id="file" class="filepath" multiple='true' onchange="changepic(this)"
+        accept="image/jpg,image/jpeg,image/png,image/PNG">
+    </a>
     <div id="preview"></div>
     <!-- 根据上传的图片动态预览图片 -->
   </div>
   <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
-  <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script type="text/javascript">
     var jData
     function jsonData(result) {
@@ -182,7 +237,7 @@
       $('#root').empty();
       $.each(jData, function (i) {
         if (jData[i].id === '1_1') {
-          init = new generate(jData[i].direction, jData[i].number, jData[i].children)
+          init = new generate(jData[i])
           height = jData[i].height
           width = jData[i].width
           init.init()
@@ -194,7 +249,7 @@
       $('#root').empty();
       $.each(jData, function (i) {
         if (jData[i].id === '1_2') {
-          init = new generate(jData[i].direction, jData[i].number, jData[i].children)
+          init = new generate(jData[i])
           height = jData[i].height
           width = jData[i].width
           init.init()
@@ -205,7 +260,7 @@
       $('#root').empty();
       $.each(jData, function (i) {
         if (jData[i].id === '1_4') {
-          init = new generate(jData[i].direction, jData[i].number, jData[i].children)
+          init = new generate(jData[i])
           height = jData[i].height
           width = jData[i].width
           init.init()
@@ -216,7 +271,7 @@
       $('#root').empty();
       $.each(jData, function (i) {
         if (jData[i].id === '1_3') {
-          init = new generate(jData[i].direction, jData[i].number, jData[i].children)
+          init = new generate(jData[i])
           height = jData[i].height
           width = jData[i].width
           init.init()
@@ -227,7 +282,7 @@
       $('#root').empty();
       $.each(jData, function (i) {
         if (jData[i].id === '1_5') {
-          init = new generate(jData[i].direction, jData[i].number, jData[i].children)
+          init = new generate(jData[i])
           height = jData[i].height
           width = jData[i].width
           init.init()
@@ -238,7 +293,7 @@
       $('#root').empty();
       $.each(jData, function (i) {
         if (jData[i].id === '1_6') {
-          init = new generate(jData[i].direction, jData[i].number, jData[i].children)
+          init = new generate(jData[i])
           height = jData[i].height
           width = jData[i].width
           init.init()
@@ -249,7 +304,7 @@
       $('#root').empty();
       $.each(jData, function (i) {
         if (jData[i].id === '1_7') {
-          init = new generate(jData[i].direction, jData[i].number, jData[i].children)
+          init = new generate(jData[i])
           height = jData[i].height
           width = jData[i].width
           init.init()
@@ -260,7 +315,29 @@
       $('#root').empty();
       $.each(jData, function (i) {
         if (jData[i].id === '1_8') {
-          init = new generate(jData[i].direction, jData[i].number, jData[i].children)
+          init = new generate(jData[i])
+          height = jData[i].height
+          width = jData[i].width
+          init.init()
+        }
+      })
+    }
+    read9 = value => {//海报模版点击
+      $('#root').empty();
+      $.each(jData, function (i) {
+        if (jData[i].id === '2_1') {
+          init = new generate(jData[i])
+          height = jData[i].height
+          width = jData[i].width
+          init.init()
+        }
+      })
+    }
+    read10 = value => {//海报模版点击
+      $('#root').empty();
+      $.each(jData, function (i) {
+        if (jData[i].id === '2_2') {
+          init = new generate(jData[i])
           height = jData[i].height
           width = jData[i].width
           init.init()
@@ -271,99 +348,10 @@
       init.changepic()
     }
 
-  </script>
-  <script>
-    download = value => {//点击按钮直接下载
-      new html2canvas(document.getElementById("root"), {
-        width: width,
-        height: height
-      }).then(function (canvas) {
-        var imgUrl = canvas.toDataURL();
-        var dom = document.createElement('a');
-        dom.setAttribute("href", imgUrl);
-        dom.setAttribute("download", "截图");
-        dom.click();
-      });
-    }
-    preview = value => {
-      new html2canvas(document.getElementById('root')).then(canvas => {
-        // canvas为转换后的Canvas对象
-        let oImg = new Image();
-        oImg.src = canvas.toDataURL();  // 导出图片
-        oImg.className = "preview"
-        document.getElementById("previewImg").appendChild(oImg);  // 将生成的图片添加到body
-      });
-    }
-
-  </script>
-
-  <script>
-    let fromDom = null,
-      toDom = null,
-      lastDom = null;
-
-    function handleDragStart(e, dom) {
-      console.log(dom.parentNode.children[0].children[0])
-      dom.style.width = '100%'
-      dom.style.height = '100%'
-      dom.style.backgroundImage = "url(\"" + dom.parentNode.children[0].children[0].src + "\")"
-      lastDom = fromDom = dom;
-    }
-    // //拖拽中
-    // function handleDrag() {
-    // }
-
-    function handleDrop(e, dom) {
-      //只有在可放置的元素上面松开鼠标才会触发drop事件
-      // if (fromDom == lastDom) {
-      //console.log('第一次调换')
-      //第一次调换
-      lastDom.style.width = '50px'
-      lastDom.style.height = '50px'
-      lastDom.style.backgroundImage = null
-      swapDom(lastDom, toDom);
-      lastDom = toDom;
-      // } else {
-      //   console.log('第N+1次调换')
-      //   //第N+1次调换，要先把上一个div的东西还原回去，再跟第三个div互换
-      //   //这个防止enter多次触发
-      //   if (lastDom == toDom) { return; }
-      //   swapDom(fromDom, lastDom);
-      //   swapDom(fromDom, toDom);
-      //   lastDom = toDom;
-      // }
-      fromDom = null;
-      toDom = null;
-    }
-    function handleDragEnd(e, dom) {
-      //拖拽时松开鼠标就会会触发dragend事件
-      console.log('end');
-      toDom = null;
-    }
-    function handleDragEnter(e, dom) {
-      //此时的dom 是被进入的dom
-      toDom = dom;
-    }
-    function handleDragOver(e, dom) {
-      //默认无法把元素放置到其他元素当中，所以需要prevent
-      e.preventDefault();
-      e.dataTransfer.effectAllowed = "move";
-    }
-
-    function swapDom(a, b) {
-      var aParent = a.parentNode;
-      var bParent = b.parentNode;
-      var abox = aParent.children[0]
-      var bbox = bParent.children[0]
-      if (abox && bbox) {
-        var aNode2 = abox.cloneNode(true);//aNode 没有父节点
-        bParent.replaceChild(aNode2, bbox);
-        aParent.replaceChild(bbox, abox);
-      }
-    }
 
 
   </script>
+
   <script src="json/demo.json?cb=jsonData"></script>
 
 </body>
