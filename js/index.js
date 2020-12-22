@@ -9,8 +9,6 @@ function generate(data) {
     this.children = data.children
     this.index = 0;
     var upload = 0;//0是多个上传（下方） 1是双击图片单个上传
-    var uploadDirection = ''//记录双击上传的方向
-
     if (data.type === '2') {//海报时插入背景图
         var imgDom = document.createElement('img')
         imgDom.src = data.src
@@ -26,6 +24,7 @@ function generate(data) {
     }
     //初始化 移动方向及个数
     this.init = function () {
+        //目前模板只允许添加4个板块拼图
         var move1 = new move;
         var move2 = new move;
         var move3 = new move;
@@ -57,7 +56,7 @@ function generate(data) {
                 new Drop('.drop1', this.dropGenerate())
                 //双击事件
                 $(".drop1").on('dblclick', function (e) {
-                    $("#file")[0].multiple = false
+                    document.getElementById('file').multiple = false
                     $("#file").trigger('click')
                     upload = 1
                 });
@@ -98,12 +97,12 @@ function generate(data) {
                 new Drop('.drop2', this.dropGenerate())
                 //双击事件
                 $(".drop1").on('dblclick', function (e) {
-                    $("#file")[0].multiple = false
+                    document.getElementById('file').multiple = false
                     $("#file").trigger('click')
                     upload = 1
                 });
                 $(".drop2").on('dblclick', function (e) {
-                    $("#file")[0].multiple = false
+                    document.getElementById('file').multiple = false
                     $("#file").trigger('click')
                     upload = 2
                 });
@@ -159,17 +158,17 @@ function generate(data) {
                 new Drop('.drop3', this.dropGenerate())
                 //双击事件
                 $(".drop1").on('dblclick', function (e) {
-                    $("#file")[0].multiple = false
+                    document.getElementById('file').multiple = false
                     $("#file").trigger('click')
                     upload = 1
                 });
                 $(".drop2").on('dblclick', function (e) {
-                    $("#file")[0].multiple = false
+                    document.getElementById('file').multiple = false
                     $("#file").trigger('click')
                     upload = 2
                 });
                 $(".drop3").on('dblclick', function (e) {
-                    $("#file")[0].multiple = false
+                    document.getElementById('file').multiple = false
                     $("#file").trigger('click')
                     upload = 3
                 });
@@ -181,7 +180,6 @@ function generate(data) {
                 fa3.appendChild(div2)
                 break;
             case 4:
-                console.log('!!!')
                 var box1 = document.createElement("div")
                 var fa1 = document.createElement("div")
                 var box2 = document.createElement("div")
@@ -241,22 +239,22 @@ function generate(data) {
                 new Drop('.drop4', this.dropGenerate())
                 //双击事件
                 $(".drop1").on('dblclick', function (e) {
-                    $("#file")[0].multiple = false
+                    document.getElementById('file').multiple = false
                     $("#file").trigger('click')
                     upload = 1
                 });
                 $(".drop2").on('dblclick', function (e) {
-                    $("#file")[0].multiple = false
+                    document.getElementById('file').multiple = false
                     $("#file").trigger('click')
                     upload = 2
                 });
                 $(".drop3").on('dblclick', function (e) {
-                    $("#file")[0].multiple = false
+                    document.getElementById('file').multiple = false
                     $("#file").trigger('click')
                     upload = 3
                 });
                 $(".drop4").on('dblclick', function (e) {
-                    $("#file")[0].multiple = false
+                    document.getElementById('file').multiple = false
                     $("#file").trigger('click')
                     upload = 4
                 });
@@ -314,13 +312,20 @@ function generate(data) {
                     var span = document.createElement('span')
                     span.setAttribute('class', 'divX')
                     span.onclick = function (e) {
-                        $('.exchange').map((index, item) => {
+                        let deleteSrc = e.target.parentNode.style.backgroundImage;
+                        let arrIndex = [];
+                        let t = 0;
+                        [].forEach.call(document.getElementsByClassName('exchange'), function(item) {
                             let temp = "url(\"" + item.src + "\")"
-                            if (temp === e.path[1].style.backgroundImage) {
-                                item.parentNode.removeChild(item)
-                            }
+                            if (temp === deleteSrc) {
+                                arrIndex.push(t)
+                            }  
+                            t=t+1
                         })
-                        e.path[1].parentNode.removeChild(e.path[1])
+                        for(let i=arrIndex.length-1;i>=0;i--){
+                            document.getElementsByClassName('exchange')[arrIndex[i]].parentNode.removeChild(document.getElementsByClassName('exchange')[arrIndex[i]])
+                        }
+                        e.target.parentNode.parentNode.removeChild(e.target.parentNode)
                     }
                     div.onmouseenter = function () {
                         span.style.display = 'block'
@@ -348,9 +353,7 @@ function generate(data) {
             }
         } else {//双击上传
             var files = document.getElementById('file').files;
-            // console.log(files)
             let uploadTemp = upload
-            let directionT = uploadDirection
             function readAndPreview(file) {
                 var reader = new FileReader();
                 reader.addEventListener("load", function () {
@@ -368,7 +371,6 @@ function generate(data) {
                     i.onload = function (e) {
                         attributeImg = (i.width / i.height).toFixed(2)
                         div.setAttribute('attribute', attributeImg)
-
                     }
                     document.getElementById('footer').appendChild(div)
                     new Drag(div, {
@@ -380,13 +382,20 @@ function generate(data) {
                     var span = document.createElement('span')
                     span.setAttribute('class', 'divX')
                     span.onclick = function (e) {
-                        $('.exchange').map((index, item) => {
+                        let deleteSrc = e.target.parentNode.style.backgroundImage;
+                        let arrIndex = [];
+                        let t = 0;
+                        [].forEach.call(document.getElementsByClassName('exchange'), function(item) {
                             let temp = "url(\"" + item.src + "\")"
-                            if (temp === e.path[1].style.backgroundImage) {
-                                item.parentNode.removeChild(item)
-                            }
+                            if (temp === deleteSrc) {
+                                arrIndex.push(t)
+                            }  
+                            t=t+1
                         })
-                        e.path[1].parentNode.removeChild(e.path[1])
+                        for(let i=arrIndex.length-1;i>=0;i--){
+                            document.getElementsByClassName('exchange')[arrIndex[i]].parentNode.removeChild(document.getElementsByClassName('exchange')[arrIndex[i]])
+                        }
+                        e.target.parentNode.parentNode.removeChild(e.target.parentNode)
                     }
                     div.onmouseenter = function () {
                         span.style.display = 'block'
@@ -398,8 +407,8 @@ function generate(data) {
                         span.style.display = 'none'
                     }
                     div.appendChild(span)
-                    if ($('.drop' + uploadTemp)[0].children[0].children.length === 0) {//空白区域双击上传图片
-                        let attributeBox = ($('.drop' + uploadTemp)[0].offsetWidth / $('.drop' + uploadTemp)[0].offsetHeight).toFixed(2)
+                    if (document.getElementsByClassName('drop'+uploadTemp)[0].children[0].children.length === 0) {//空白区域双击上传图片
+                        let attributeBox = (document.getElementsByClassName('drop'+uploadTemp)[0].offsetWidth / document.getElementsByClassName('drop'+uploadTemp)[0].offsetHeight).toFixed(2)
                         var img = document.createElement("img")
                         img.src = this.result
                         img.setAttribute('draggable', 'false')
@@ -412,19 +421,19 @@ function generate(data) {
                             img.setAttribute('attribute', attributeImg)
                             if (attributeBox > attributeImg) {
                                 img.style.width = '100%'
-                                $('.drop' + uploadTemp)[0].children[0].style.width = '100%'
-                                let height = (($('.drop' + uploadTemp)[0].offsetWidth / attributeImg) / 2).toFixed(0) - ($('.drop' + uploadTemp)[0].offsetHeight / 2).toFixed(0)
-                                $('.drop' + uploadTemp)[0].children[0].style.top = -height + 'px'
+                                document.getElementsByClassName('drop'+uploadTemp)[0].children[0].style.width = '100%'
+                                let height = ((document.getElementsByClassName('drop'+uploadTemp)[0].offsetWidth / attributeImg) / 2).toFixed(0) - (document.getElementsByClassName('drop'+uploadTemp)[0].offsetHeight / 2).toFixed(0)
+                                document.getElementsByClassName('drop'+uploadTemp)[0].children[0].style.top = -height + 'px'
                             } else {
                                 img.style.height = '100%'
-                                $('.drop' + uploadTemp)[0].children[0].style.height = '100%'
-                                let width = ((attributeImg * $('.drop' + uploadTemp)[0].offsetHeight) / 2).toFixed(0) - ($('.drop' + uploadTemp)[0].offsetWidth / 2).toFixed(0)
-                                $('.drop' + uploadTemp)[0].children[0].style.left = -width + 'px'
+                                document.getElementsByClassName('drop'+uploadTemp)[0].children[0].style.height = '100%'
+                                let width = ((attributeImg * document.getElementsByClassName('drop'+uploadTemp)[0].offsetHeight) / 2).toFixed(0) - (document.getElementsByClassName('drop'+uploadTemp)[0].offsetWidth / 2).toFixed(0)
+                                document.getElementsByClassName('drop'+uploadTemp)[0].children[0].style.left = -width + 'px'
                             }
                         }
-                        $('.drop' + uploadTemp)[0].children[0].appendChild(img)
+                        document.getElementsByClassName('drop'+uploadTemp)[0].children[0].appendChild(img)
                     } else {//非空白区域双击上传图片
-                        let attributeBox = ($('.drop' + uploadTemp)[0].offsetWidth / $('.drop' + uploadTemp)[0].offsetHeight).toFixed(2)
+                        let attributeBox = (document.getElementsByClassName('drop'+uploadTemp)[0].offsetWidth / document.getElementsByClassName('drop'+uploadTemp)[0].offsetHeight).toFixed(2)
                         var img = document.createElement("img")
                         img.src = this.result
                         img.setAttribute('draggable', 'false')
@@ -437,18 +446,18 @@ function generate(data) {
                             img.setAttribute('attribute', attributeImg)
                             if (attributeBox > attributeImg) {
                                 img.style.width = '100%'
-                                $('.drop' + uploadTemp)[0].children[0].style.width = '100%'
-                                let height = (($('.drop' + uploadTemp)[0].offsetWidth / attributeImg) / 2).toFixed(0) - ($('.drop' + uploadTemp)[0].offsetHeight / 2).toFixed(0)
-                                $('.drop' + uploadTemp)[0].children[0].style.top = -height + 'px'
+                                document.getElementsByClassName('drop'+uploadTemp)[0].children[0].style.width = '100%'
+                                let height = ((document.getElementsByClassName('drop'+uploadTemp)[0].offsetWidth / attributeImg) / 2).toFixed(0) - (document.getElementsByClassName('drop'+uploadTemp)[0].offsetHeight / 2).toFixed(0)
+                                document.getElementsByClassName('drop'+uploadTemp)[0].children[0].style.top = -height + 'px'
                             } else {
                                 img.style.height = '100%'
-                                $('.drop' + uploadTemp)[0].children[0].style.height = '100%'
-                                let width = ((attributeImg * $('.drop' + uploadTemp)[0].offsetHeight) / 2).toFixed(0) - ($('.drop' + uploadTemp)[0].offsetWidth / 2).toFixed(0)
-                                $('.drop' + uploadTemp)[0].children[0].style.left = -width + 'px'
+                                document.getElementsByClassName('drop'+uploadTemp)[0].children[0].style.height = '100%'
+                                let width = ((attributeImg * document.getElementsByClassName('drop'+uploadTemp)[0].offsetHeight) / 2).toFixed(0) - (document.getElementsByClassName('drop'+uploadTemp)[0].offsetWidth / 2).toFixed(0)
+                                document.getElementsByClassName('drop'+uploadTemp)[0].children[0].style.left = -width + 'px'
                             }
                         }
-                        $('.drop' + uploadTemp)[0].children[0].removeChild($('.drop' + uploadTemp)[0].children[0].children[0])
-                        $('.drop' + uploadTemp)[0].children[0].appendChild(img)
+                        document.getElementsByClassName('drop'+uploadTemp)[0].children[0].removeChild(document.getElementsByClassName('drop'+uploadTemp)[0].children[0].children[0])
+                        document.getElementsByClassName('drop'+uploadTemp)[0].children[0].appendChild(img)
                     }
 
                 }, false);
@@ -458,7 +467,8 @@ function generate(data) {
                 [].forEach.call(files, readAndPreview);
             }
         }
-        $("#file")[0].multiple = true
+
+        document.getElementById('file').multiple = true
         upload = 0
     }
 
@@ -502,24 +512,19 @@ function generate(data) {
 function move() {
     this.move = function (fa, box) {
         box.onmousedown = function (ev) { 
-            // let div = document.getElementsByClassName('box')
-            // console.log(div)
-            let container = null
             var oEvent = ev;
-            // console.log(oEvent)
             oEvent.preventDefault();
             var disY = oEvent.clientY - box.offsetTop;//鼠标点击时 对于浏览器屏幕的y位置
             var disX = oEvent.clientX - box.offsetLeft;//鼠标点击时 对于浏览器屏幕的y位置
             fa.onmousemove = function (ev) {
                 oEvent = ev;
                 oEvent.preventDefault();
-                container = this
                 var y = oEvent.clientY - disY;//相对于鼠标落下的点 鼠标在横轴移动的距离 向上为负 向下为正
                 var x = oEvent.clientX - disX;//相对于鼠标落下的点 鼠标在横轴移动的距离 向左为负 向右为正
-                x = x <= 0 ? x : 0;
-                x = x >= fa.offsetWidth - box.offsetWidth - 2 ? x : fa.offsetWidth - box.offsetWidth - 2;//左边界 减去边界的px
+                x = x <= 0 ? x-2 : 0;
+                x = x >= fa.offsetWidth - box.offsetWidth ? x : fa.offsetWidth - box.offsetWidth-2 ;//左边界 减去边界的px
                 y = y <= 0 ? y : 0;
-                y = y >= fa.offsetHeight - box.offsetHeight ? y : fa.offsetHeight - box.offsetHeight - 2;//下边界 减去边界的px
+                y = y >= fa.offsetHeight - box.offsetHeight ? y : fa.offsetHeight - box.offsetHeight+2;//下边界 减去边界的px
                 box.style.left = x + 'px';
                 box.style.top = y + 'px';
             }
@@ -552,15 +557,7 @@ download = value => {//点击按钮直接下载
         dom.click();
     });
 }
-preview = value => {
-    new html2canvas(document.getElementById('root')).then(canvas => {
-        // canvas为转换后的Canvas对象
-        let oImg = new Image();
-        oImg.src = canvas.toDataURL();  // 导出图片
-        oImg.className = "preview"
-        document.getElementById("previewImg").appendChild(oImg);  // 将生成的图片添加到body
-    });
-}
+
 
 
 
@@ -582,9 +579,8 @@ function handleDragStart(e, dom) {
 // }
 function handleDrop(e, dom) {
     //只有在可放置的元素上面松开鼠标才会触发drop事件
-    // console.log(dom)
-    console.log(lastDom.parentNode)//拖动的
-    console.log(toDom.parentNode)//释放的
+    // console.log(lastDom.parentNode)//拖动的
+    // console.log(toDom.parentNode)//释放的
     if (fromDom == lastDom) {
         //console.log('第一次调换')
         //第一次调换
@@ -698,6 +694,5 @@ function handleMouseOver(e, dom) {
 
 function handleMouseOut(e, dom) {
     dom.style.opacity = 0
-
 }
 

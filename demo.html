@@ -35,13 +35,12 @@
     }
 
     #footer {
-      
       height: 100px;
-      width: calc(100% - 400px);
+      width: 80%;
       background-color: cornflowerblue;
       bottom: 0;
       position: absolute;
-      margin-left: 400px;
+      margin-left: 20%;
       display: flex;
       flex-direction: row;
       align-items: center;
@@ -172,9 +171,9 @@
   </style>
 </head>
 
-<body>
-  <div id="previewImg"> </div>
-  <div style="width: 400px; height: 100%; float:left;background-color: teal;z-index: 100;">
+<body><div style="width: 1440px; height: 766px;">
+  <div style="width: 100%;height: 100%; position: relative;" id="init">
+  <div style="width: 20%; height: 100%; float:left;background-color: teal;z-index: 100;">
     <button class="moduleButton" onclick="read1()">
       模版一
     </button>
@@ -207,17 +206,12 @@
     </button>
     <button class="moduleButton" onclick="download()">下载</button>
   </div>
-  <div>
-    <div>
       <!-- <input style="width: 1000px;height: 1000px; opacity: 0; position: absolute;left:400px;" type="file" id="dbc" class="filepath"
         multiple  accept="image/jpg,image/jpeg,image/png,image/PNG"> -->
       <div id="root">
         <!-- 根据模板生成 -->
       </div>
-    </div>
-  </div>
-  <!-- <button style="margin-left:400px;margin-top: 50px;" onclick="preview()">预览</button> style="margin-left: 20px;width: 75px;" -->
-
+  
   <div id="footer">
     <a href="javascript:;" class="file">点击上传文件
       <input type="file" id="file" class="filepath" multiple='true' onchange="changepic(this)"
@@ -226,14 +220,19 @@
     <div id="preview"></div>
     <!-- 根据上传的图片动态预览图片 -->
   </div>
+</div>
+</div>
   <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
   <script type="text/javascript">
     var jData
     function jsonData(result) {
       jData = result
     }
-    var height, width//获取整张图片的大小，用以下载拼图
-    var init
+  </script>
+  <script src="json/demo.json?cb=jsonData"></script>
+<script>
+     var height, width//获取整张图片的大小，用以下载拼图
+      var init
 
     function read1() {//模版一点击
       var root = document.getElementById('root')
@@ -244,6 +243,7 @@
       for(var key in jData){
         if(jData[key].id==='1_1'){
           init = new generate(jData[key])
+          console.log(jData[key])
           height = jData[key].height
           width = jData[key].width
           init.init()
@@ -251,7 +251,7 @@
         }
       }
     }
-
+    read1();
     read2 = value => {//模版二点击
       var root = document.getElementById('root')
       var rootChild = root.childNodes
@@ -403,10 +403,7 @@
 
 
 
-  </script>
-
-  <script src="json/demo.json?cb=jsonData"></script>
-
+</script>
 </body>
 
 </html>

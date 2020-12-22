@@ -1,0 +1,158 @@
+html,
+body {
+    background-color: sandybrown;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
+.box {
+    position: absolute;
+}
+
+.father {
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+    border: white 1px solid;
+}
+
+img {
+    cursor: pointer;
+}
+
+#footer {
+    height: 100px;
+    width: 80%;
+    background-color: cornflowerblue;
+    bottom: 0;
+    position: absolute;
+    margin-left: 20%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.uploadImg {
+    width: 50px;
+    height: 50px;
+}
+
+.uploadDiv {
+    width: 50px;
+    height: 50px;
+    margin-left: 20px;
+    position: relative;
+}
+
+.uploadDiv .delete {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 50px;
+    height: 50px;
+    display: none;
+}
+
+.exchange {
+    /* width:auto;
+height:auto;
+margin-left: 20px; */
+    position: relative;
+}
+
+.exchangeModule0 {
+    position: relative;
+    height: 50px;
+    width: 100%;
+    z-index: 100;
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0.2);
+    cursor: move;
+}
+
+.exchangeModule1 {
+    position: relative;
+    height: 50px;
+    width: 100%;
+    z-index: 100;
+    background-color: rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    cursor: move;
+}
+
+.exchangeModule2 {
+    position: relative;
+    height: 50px;
+    width: 100%;
+    z-index: 100;
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0.2);
+    cursor: move;
+}
+
+.exchangeModule3 {
+    position: relative;
+    height: 50px;
+    width: 100%;
+    z-index: 100;
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0.2);
+    cursor: move;
+}
+
+.moduleButton {
+    width: 30%;
+    height: 30px;
+    margin: 50px 0 30px 30px;
+    text-align: center;
+    line-height: 26px;
+    float: left;
+}
+
+.divX:before {
+    content: '✕';
+}
+
+.divX {
+    position: absolute;
+    top: -10px;
+    right: -5px;
+    cursor: pointer;
+    color: red;
+    display: none;
+}
+
+.file {
+    position: relative;
+    display: inline-block;
+    background: #D0EEFF;
+    border: 1px solid #99D3F5;
+    border-radius: 4px;
+    padding: 4px 12px;
+    overflow: hidden;
+    color: #1E88C7;
+    text-decoration: none;
+    text-indent: 0;
+    line-height: 20px;
+    margin-left: 20px;
+    width: 86px;
+    font-size: 14px;
+}
+
+.file input {
+    position: absolute;
+    /* font-size: 30px; */
+    right: 0;
+    top: 0;
+    opacity: 0;
+
+}
+
+.file:hover {
+    background: #AADFFD;
+    border-color: #78C3F3;
+    color: #004974;
+    text-decoration: none;
+}
