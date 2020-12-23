@@ -17,7 +17,9 @@
         fromDom: null,
         toDom: null,
         lastDom: null,
-        scale:0.5
+        scale:1,
+        leftWidth:'15%',//左边模版按钮的宽度
+        imgSrc :'',
     }
 
     var generate = function (data) {
@@ -61,6 +63,7 @@
                     var fa1 = document.createElement("div")
                     box1.className = 'box'
                     fa1.className = 'droppable-box drop1 father'
+                    fa1.style.backgroundColor = 'cornflowerblue'
                     fa1.appendChild(box1)
                     document.getElementById('root').appendChild(fa1)
                     fa1.style.left = this.children[0].left + 'px'
@@ -93,6 +96,8 @@
                     box2.className = 'box'
                     fa1.className = 'droppable-box drop1 father'
                     fa2.className = 'droppable-box drop2 father'
+                    fa1.style.backgroundColor = 'cornflowerblue'
+                    fa2.style.backgroundColor = 'wheat'
                     fa1.appendChild(box1)
                     fa2.appendChild(box2)
                     document.getElementById('root').appendChild(fa1)
@@ -145,6 +150,9 @@
                     fa1.className = 'droppable-box drop1 father'
                     fa2.className = 'droppable-box drop2 father'
                     fa3.className = 'droppable-box drop3 father'
+                    fa1.style.backgroundColor = 'cornflowerblue'
+                    fa2.style.backgroundColor = 'wheat'
+                    fa3.style.backgroundColor = 'honeydew'
                     fa1.appendChild(box1)
                     fa2.appendChild(box2)
                     fa3.appendChild(box3)
@@ -304,6 +312,7 @@
                     dom.style.height = 100 * options.scale +'%'
                     dom.style.backgroundImage = "url(\"" + dom.parentNode.children[0].children[0].src + "\")"
                     dom.style.backgroundSize = "100% 100%" 
+                    dom.style.visibility = 'none'
                     //dom.style.backgroundSize = 100/options.scale +'% '+100/options.scale +'%'
                     // console.log(100/options.scale +'% '+100/options.scale +'%')
                 }
@@ -417,7 +426,6 @@
         }
     }
 
-    //TODO 移动存在bug
     var move = function () {
         this.move = function (fa, box) {
             box.onmousedown = function (ev) {
@@ -425,7 +433,6 @@
                 oEvent.preventDefault();
                 var disY = oEvent.clientY - box.offsetTop;//鼠标点击时 对于浏览器屏幕的y位置
                 var disX = oEvent.clientX - box.offsetLeft;//鼠标点击时 对于浏览器屏幕的y位置
-                console.log(fa.offsetHeight - box.offsetHeight)
                 fa.onmousemove = function (ev) {
                     oEvent = ev;
                     oEvent.preventDefault();
@@ -472,6 +479,7 @@
         var Drag = dnd.Drag
         var Drop = dnd.Drop
         // let index = this.index
+        
         if (options.upload === 0) {
             var files = document.getElementById('file').files;
             function readAndPreview(file) {
@@ -721,7 +729,9 @@
     var generateButton = function (key, index) {
         var button = document.createElement('button')
         button.className = "moduleButton"
-        button.innerText = "模板"
+        button.style.backgroundImage =  "url(\"" + key.src + "\")"
+        button.style.backgroundSize = '100% 100%'
+        //button.innerText = "模板"
         button.onclick = function () {
             var root = document.getElementById('root')
             var rootChild = root.childNodes
@@ -776,6 +786,7 @@
             }
             return this;
         },
+        //load 清除
         // listen: function listen(elem) {
         //     if (typeof elem === 'string') {
         //         var elems = document.querySelectorAll(elem),
@@ -800,12 +811,13 @@
             var divAll = document.createElement('div')
             divAll.style = "width:" + options.width + ";height:" + options.height + ";position: relative;"
             var divLeft = document.createElement('div')
-            divLeft.style = "width: 20%; height: 100%; float:left;background-color: teal;z-index: 100;overflow:auto;"
+            divLeft.style = "width: "+options.leftWidth+"; height: 100%; float:left;z-index: 100;background-color:#fff;overflow:auto;"
             var divCenter = document.createElement('div')
             divCenter.id = 'root'
             divCenter.style = 'transform:scale('+options.scale+');transform-origin:0px 0px'//以左上角为原点进行缩放
             var divFooter = document.createElement('div')
             divFooter.id = 'footer'
+            divFooter.style.marginLeft = options.leftWidth
             var updateStr = "<a href=\"javascript:;\" class=\"file\">点击上传文件" +
                 "<input type=\"file\" id=\"file\" class=\"filepath\" multiple=\'true\' " +
                 "accept=\"image/jpg,image/jpeg,image/png,image/PNG\">" +
@@ -825,6 +837,9 @@
             downloadButton.className = "moduleButton"
             downloadButton.onclick = download
             divLeft.appendChild(downloadButton)
+            if(options.imgSrc.length!=0){
+                console.log(options.imgSrc)//需要在这里初始化传入的图片，同时置空，后面会再次判断一次吗？
+            }
             return
         }
     }

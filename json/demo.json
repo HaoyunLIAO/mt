@@ -4,32 +4,32 @@ jsonData([
         "name": "三横",
         "logo": "xxx.jpg",
         "bgColor": "#fff",
-        "src": "xx.jpg",
+        "src": "./Template/Template1.png",
         "direction":"upDown",
         "type": "1",
         "number": 3,
-        "width":600,
-        "height":600,
+        "width":580,
+        "height":390,
         "children": [
             {
                 "left": 0,
                 "top": 0,
-                "width": 600,
-                "height": 200,
+                "width": 580,
+                "height": 130,
                 "backgroundImg": "xx.jpg"
             },
             {
                 "left": 0,
                 "top": 0,
-                "width": 600,
-                "height": 200,
+                "width": 580,
+                "height": 130,
                 "backgroundImg": "xx.jpg"
             },
             {
                 "left": 0,
                 "top": 0,
-                "width": 600,
-                "height": 200,
+                "width": 580,
+                "height": 130,
                 "backgroundImg": "xx.jpg"
             }
         ]
@@ -39,32 +39,32 @@ jsonData([
         "name": "三竖",
         "logo": "xxx.jpg",
         "bgColor": "#fff",
-        "src": "xx.jpg",
+        "src": "./Template/Template2.png",
         "direction":"leftRight",
         "type": "1",
         "number": 3,
-        "width":600,
-        "height":600,
+        "width":570,
+        "height":390,
         "children": [
             {
                 "left": 0,
                 "top": 0,
-                "width": 200,
-                "height": 600,
+                "width": 190,
+                "height": 390,
                 "backgroundImg": "xx.jpg"
             },
             {
                 "left": 0,
                 "top": 0,
-                "width": 200,
-                "height": 600,
+                "width": 190,
+                "height": 390,
                 "backgroundImg": "xx.jpg"
             },
             {
                 "left": 0,
                 "top": 0,
-                "width": 200,
-                "height": 600,
+                "width": 190,
+                "height": 390,
                 "backgroundImg": "xx.jpg"
             }
         ]
@@ -74,25 +74,25 @@ jsonData([
         "name": "二竖",
         "logo": "xxx.jpg",
         "bgColor": "#fff",
-        "src": "xx.jpg",
+        "src": "./Template/Template3.png",
         "direction":"leftRight",
         "type": "1",
         "number": 2,
-        "width":600,
-        "height":600,
+        "width":580,
+        "height":390,
         "children": [
             {
                 "left": 0,
                 "top": 0,
-                "width": 300,
-                "height": 600,
+                "width": 290,
+                "height": 390,
                 "backgroundImg": "xx.jpg"
             },
             {
                 "left": 0,
                 "top": 0,
-                "width": 300,
-                "height": 600,
+                "width": 290,
+                "height": 390,
                 "backgroundImg": "xx.jpg"
             }
         ]
@@ -102,25 +102,25 @@ jsonData([
         "name": "二横",
         "logo": "xxx.jpg",
         "bgColor": "#fff",
-        "src": "xx.jpg",
+        "src": "./Template/Template4.png",
         "direction":"upDown",
         "type": "1",
         "number": 2,
-        "width":600,
-        "height":600,
+        "width":580,
+        "height":390,
         "children": [
             {
                 "left": 0,
                 "top": 0,
-                "width": 600,
-                "height": 300,
+                "width": 580,
+                "height": 195,
                 "backgroundImg": "xx.jpg"
             },
             {
                 "left": 0,
                 "top": 0,
-                "width": 600,
-                "height": 300,
+                "width": 580,
+                "height": 195,
                 "backgroundImg": "xx.jpg"
             }
         ]
@@ -130,32 +130,32 @@ jsonData([
         "name": "二小横一大横",
         "logo": "xxx.jpg",
         "bgColor": "#fff",
-        "src": "xx.jpg",
+        "src": "./Template/Template5.png",
         "direction":"upDown",
         "type": "1",
         "number": 3,
-        "width":600,
-        "height":650,
+        "width":580,
+        "height":390,
         "children": [
             {
                 "left": 0,
                 "top": 0,
-                "width": 300,
-                "height": 350,
+                "width": 290,
+                "height": 195,
                 "backgroundImg": "xx.jpg"
             },
             {
-                "left": 300,
-                "top": -350,
-                "width": 300,
-                "height": 350,
+                "left": 290,
+                "top": -195,
+                "width": 290,
+                "height": 195,
                 "backgroundImg": "xx.jpg"
             },
             {
                 "left": 0,
-                "top": -350,
-                "width": 600,
-                "height": 300,
+                "top": -195,
+                "width": 580,
+                "height": 195,
                 "backgroundImg": "xx.jpg"
             }
         ]
@@ -165,32 +165,32 @@ jsonData([
         "name": "一大横二小横",
         "logo": "xxx.jpg",
         "bgColor": "#fff",
-        "src": "xx.jpg",
+        "src": "./Template/Template6.png",
         "direction":"upDown",
         "type": "1",
         "number": 3,
-        "width":600,
-        "height":650,
+        "width":580,
+        "height":390,
         "children": [
             {
                 "left": 0,
                 "top": 0,
-                "width": 600,
-                "height": 300,
+                "width": 580,
+                "height": 195,
                 "backgroundImg": "xx.jpg"
             },
             {
-                "left": 300,
+                "left": 290,
                 "top": 0,
-                "width": 300,
-                "height": 350,
+                "width": 290,
+                "height": 195,
                 "backgroundImg": "xx.jpg"
             },
             {
                 "left": 0,
-                "top": -350,
-                "width": 300,
-                "height": 350,
+                "top": -195,
+                "width": 290,
+                "height": 195,
                 "backgroundImg": "xx.jpg"
             }
         ]
@@ -200,32 +200,32 @@ jsonData([
         "name": "一大竖二小竖",
         "logo": "xxx.jpg",
         "bgColor": "#fff",
-        "src": "xx.jpg",
+        "src": "./Template/Template7.png",
         "direction":"upDown",
         "type": "1",
         "number": 3,
-        "width":600,
-        "height":600,
+        "width":580,
+        "height":390,
         "children": [
             {
                 "left": 0,
                 "top": 0,
-                "width": 300,
-                "height": 600,
+                "width": 290,
+                "height": 390,
                 "backgroundImg": "xx.jpg"
             },
             {
-                "left": 300,
-                "top": -600,
-                "width": 300,
-                "height": 300,
+                "left": 290,
+                "top": -390,
+                "width": 290,
+                "height": 195,
                 "backgroundImg": "xx.jpg"
             },
             {
-                "left": 300,
-                "top": -600,
-                "width": 300,
-                "height": 300,
+                "left": 290,
+                "top": -390,
+                "width": 290,
+                "height": 195,
                 "backgroundImg": "xx.jpg"
             }
         ]
@@ -235,32 +235,32 @@ jsonData([
         "name": "二小竖一大竖",
         "logo": "xxx.jpg",
         "bgColor": "#fff",
-        "src": "xx.jpg",
+        "src": "./Template/Template8.png",
         "direction":"upDown",
         "type": "1",
         "number": 3,
-        "width":600,
-        "height":600,
+        "width":580,
+        "height":390,
         "children": [
             {
                 "left": 0,
                 "top": 0,
-                "width": 300,
-                "height": 300,
+                "width": 290,
+                "height": 195,
                 "backgroundImg": "xx.jpg"
             },
             {
                 "left": 0,
                 "top": 0,
-                "width": 300,
-                "height": 300,
+                "width": 290,
+                "height": 195,
                 "backgroundImg": "xx.jpg"
             },
             {
-                "left": 300,
-                "top": -600,
-                "width": 300,
-                "height": 600,
+                "left": 290,
+                "top": -390,
+                "width": 290,
+                "height": 390,
                 "backgroundImg": "xx.jpg"
             }
         ]
@@ -274,14 +274,14 @@ jsonData([
         "direction":"upDown",
         "type": "2",
         "number": 1,
-        "width":700,
-        "height":600,
+        "width":580,
+        "height":390,
         "children": [
             {
-                "left": 164,
-                "top": 118,
-                "width": 375,
-                "height": 365,
+                "left": 135,
+                "top": 76,
+                "width": 312,
+                "height": 238,
                 "backgroundImg": "xx.jpg"
             }
         ]
@@ -295,35 +295,35 @@ jsonData([
         "direction":"upDown",
         "type": "2",
         "number": 4,
-        "width":500,
-        "height":600,
+        "width":300,
+        "height":390,
         "children": [
             {
-                "left": 58,
-                "top": 96,
-                "width": 158,
-                "height": 177,
+                "left": 35,
+                "top": 62,
+                "width": 95,
+                "height": 115,
                 "backgroundImg": "xx.jpg"
             },
             {
-                "left": 279,
-                "top": -81,
-                "width": 158,
-                "height": 177,
+                "left": 167,
+                "top": -53,
+                "width": 95,
+                "height": 115,
                 "backgroundImg": "xx.jpg"
             },
             {
-                "left": 57,
-                "top": 19,
-                "width": 158,
-                "height": 177,
+                "left": 35,
+                "top": 13,
+                "width": 95,
+                "height": 115,
                 "backgroundImg": "xx.jpg"
             },
             {
-                "left": 278,
-                "top": -158,
-                "width": 158,
-                "height": 177,
+                "left": 167,
+                "top": -103,
+                "width": 95,
+                "height": 115,
                 "backgroundImg": "xx.jpg"
             }
         ]
