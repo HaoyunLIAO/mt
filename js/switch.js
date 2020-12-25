@@ -17,10 +17,10 @@
         fromDom: null,
         toDom: null,
         lastDom: null,
-        scale:1,
-        leftWidth:'15%',//左边模版按钮的宽度
-        imgSrc :'',
-        root:'',
+        scale: 1,
+        leftWidth: '15%',//左边模版按钮的宽度
+        imgSrc: '',
+        root: '',
     }
 
     var generate = function (data) {
@@ -309,10 +309,10 @@
             div.addEventListener('dragstart', function start(event) {
                 dom = this
                 if (dom.parentNode.children[0].children.length !== 0) {
-                    dom.style.width =  100 * options.scale +'%'
-                    dom.style.height = 100 * options.scale +'%'
+                    dom.style.width = 100 * options.scale + '%'
+                    dom.style.height = 100 * options.scale + '%'
                     dom.style.backgroundImage = "url(\"" + dom.parentNode.children[0].children[0].src + "\")"
-                    dom.style.backgroundSize = "100% 100%" 
+                    dom.style.backgroundSize = "100% 100%"
                     dom.style.visibility = 'none'
                     //dom.style.backgroundSize = 100/options.scale +'% '+100/options.scale +'%'
                     // console.log(100/options.scale +'% '+100/options.scale +'%')
@@ -321,14 +321,14 @@
             })
             //div.setAttribute('ondragstart', 'handleDragStart(event,this)')
             div.addEventListener('dragover', function over(e) {
-           
+
                 //默认无法把元素放置到其他元素当中，所以需要prevent
                 e.preventDefault();
                 e.dataTransfer.effectAllowed = "move";
             })
             //div.setAttribute('ondragover', 'handleDragOver(event,this)')
             div.addEventListener('dragend', function end(event) {
-              
+
                 dom = this
                 if (dom.parentNode.children[0].children !== 0) {
                     dom.style.height = '50px'
@@ -342,7 +342,7 @@
             })
             //div.setAttribute('ondragend', 'handleDragEnd(event,this)')
             div.addEventListener('drop', function drp(event) {
-               
+
                 dom = this
                 //只有在可放置的元素上面松开鼠标才会触发drop事件
                 // console.log(lastDom.parentNode)//拖动的
@@ -371,21 +371,21 @@
             })
             //div.setAttribute('ondrop', 'handleDrop(event,this)')
             div.addEventListener('dragenter', function enter(event) {
-               
+
                 dom = this
                 //此时的dom 是被进入的dom
                 options.toDom = dom;
             })
             //div.setAttribute('ondragenter', 'handleDragEnter(event,this)')
             div.addEventListener('mouseover', function mover(event) {
-              
+
                 dom = this
                 dom.style.opacity = 1
                 dom.style.transition = 'opacity .6s'
             })
             //div.setAttribute('onmouseover', 'handleMouseOver(event,this)')
             div.addEventListener('mouseout', function mout(event) {
-             
+
                 dom = this
                 dom.style.opacity = 0
             })
@@ -480,7 +480,7 @@
         }
     }
 
-    var generateSmallPic = function(imgData){
+    var generateSmallPic = function (imgData) {
         var Drag = dnd.Drag
         var div = document.createElement("div")
         div.setAttribute('class', "draggable-node uploadDiv")
@@ -735,34 +735,11 @@
         }
     }
 
-    function getBase64(img){//传入图片路径，返回base64
-        function getBase64Image(img,width,height) {//width、height调用时传入具体像素值，控制大小 ,不传则默认图像大小
-          var canvas = document.createElement("canvas");
-          canvas.width = width ? width : img.width;
-          canvas.height = height ? height : img.height;
-
-          var ctx = canvas.getContext("2d");
-          ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-          var dataURL = canvas.toDataURL();
-          return dataURL;
-        }
-        var image = new Image();
-        image.src = img;
-        var deferred=$.Deferred();
-        if(img){
-          image.onload =function (){
-            deferred.resolve(getBase64Image(image));//将base64传给done上传处理
-          }
-          return deferred.promise();//问题要让onload完成后再return sessionStorage['imgTest']
-        }
-      }
- 
-
     //动态生成模版按钮
     var generateButton = function (key, index) {
         var button = document.createElement('button')
         button.className = "moduleButton"
-        button.style.backgroundImage =  "url(\"" + key.src + "\")"
+        button.style.backgroundImage = "url(\"" + key.src + "\")"
         button.style.backgroundSize = '100% 100%'
         //button.innerText = "模板"
         button.onclick = function () {
@@ -809,9 +786,8 @@
             dom.click();
         });
     }
-    async function  previewUrl(){
-        var imgUrl
-        imgUrl = await new html2canvas(document.getElementById("root"), {
+    async function previewUrl() {
+        var imgUrl = await new html2canvas(document.getElementById("root"), {
             allowTaint: false,
             useCORS: true,
             scale: 2,
@@ -820,25 +796,25 @@
             height: options.heightPic * options.scale,
         }).then(function (canvas) {
             var imgUrl = canvas.toDataURL();
-           return imgUrl
+            return imgUrl
         });
         return imgUrl
     }
     //应用当前图片的拼图 应该先清除
-    var application =function(){
+    var application = function () {
         //confirm弹出框实例  
-     var conf=confirm("确定要应用当前拼图吗？");  
-     //显示用户选择的confirm  
-     if(conf==true){  
-        var dom = options.root
-        previewUrl().then(res =>{
-            options.imgSrc = res
-            api.destroy(dom)
-            api.init(dom)
-        })
-     }else {  
-       return
-     }  
+        var conf = confirm("确定要应用当前拼图吗？");
+        //显示用户选择的confirm  
+        if (conf == true) {
+            var dom = options.root
+            previewUrl().then(res => {
+                options.imgSrc = res
+                api.destroy(dom)
+                api.init(dom)
+            })
+        } else {
+            return
+        }
     }
 
     //暴露在外面的接口
@@ -876,10 +852,10 @@
             var divAll = document.createElement('div')
             divAll.style = "width:" + options.width + ";height:" + options.height + ";position: relative;"
             var divLeft = document.createElement('div')
-            divLeft.style = "width: "+options.leftWidth+"; height: 100%; float:left;z-index: 100;background-color:#fff;overflow:auto;"
+            divLeft.style = "width: " + options.leftWidth + "; height: 100%; float:left;z-index: 100;background-color:#fff;overflow:auto;"
             var divCenter = document.createElement('div')
             divCenter.id = 'root'
-            divCenter.style = 'transform:scale('+options.scale+');transform-origin:0px 0px'//以左上角为原点进行缩放
+            divCenter.style = 'transform:scale(' + options.scale + ');transform-origin:0px 0px'//以左上角为原点进行缩放
             var divFooter = document.createElement('div')
             divFooter.id = 'footer'
             divFooter.style.marginLeft = options.leftWidth
@@ -907,20 +883,13 @@
             downloadButton.className = "moduleButton"
             downloadButton.onclick = application
             divLeft.appendChild(downloadButton)
-            if(options.imgSrc.length!=0){
-                // getBase64(options.imgSrc)
-                // .then(function(base64){
-                //   console.log(base64);
-                // },function(err){
-                //   console.log(err);
-                // });
-         
+            if (options.imgSrc.length != 0) {
                 generateSmallPic(options.imgSrc)
                 // console.log(options)
             }
             return
         },
-        destroy:function destroy(elem){
+        destroy: function destroy(elem) {
             if (typeof elem === 'string') {
                 var elems = document.querySelectorAll(elem),
                     i = elems.length;
@@ -929,13 +898,13 @@
                 }
             }
             elem.removeChild(elem.children[0])
-            elem.children[0]=null//置为null是为了移除事件
+            elem.children[0] = null//置为null是为了移除事件
         },
-        img64:async function img64(){
+        img64: async function img64() {
             var url = await previewUrl();
             return url
         },
-        reload :function reload(url){//重新加载 可接受其他tab传来的图片，然后解绑/摧毁之前的事件，重新绑定
+        reload: function reload(url) {//重新加载 可接受其他tab传来的图片，然后解绑/摧毁之前的事件，重新绑定
             console.log(this)
         }
     }
