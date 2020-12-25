@@ -26,13 +26,14 @@ img {
 
 #footer {
     height: 60px;
-    width: 100%;
+    min-width: 100%;
     background-color:#fff;
     bottom: 0;
     position: absolute;
     display: flex;
     flex-direction: row;
     align-items: center;
+    overflow-x: scroll;
 }
 
 .uploadImg {
