@@ -35,6 +35,47 @@ img {
     align-items: center;
     overflow-x: scroll;
 }
+#box{
+    margin: 20px 0 0 10px;
+    color: black;
+    width: 70px;
+    height: 25px;
+    border: 1px solid #c5c5c5;
+    border-radius: 10px;
+    /* background-color: #797777; */
+    text-align: center;
+    /* text-indent: 5px; */
+    font-size: 12px;
+    line-height: 25px;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+#down{
+    margin: 0px 0 0 10px;
+    border: 1px solid #c5c5c5;
+    width: 70px;
+    /* margin-left: 5px;  */
+    display: none;
+}
+ul{
+    padding: 0;
+    margin: 0;
+}
+li{
+    list-style: none;
+    font-size: 12px;
+    border-bottom: 1px solid #c5c5c5;
+    text-align: center;
+    height: 25px;
+    line-height: 25px;
+    color: black;
+    /* background-color: #333; */
+    cursor: pointer;
+}
+li:hover{
+    /* background-color: #5c0e0e; */
+}
 
 .uploadImg {
     width: 50px;

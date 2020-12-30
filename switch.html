@@ -31,23 +31,17 @@
             top: '20px',
             scale: 1,
             leftWidth: '13%',
-            imgSrc:'./img/cat3.jpg',//外界传入图片
+            imgSrc: '',//外界传入图片
         })
         Switch.init('#init');
-        Switch.reload()
-        Switch.img64().then(res =>{ //异步方法
-            Switch.config({
-            imgSrc:res,//外界传入图片
-        })   
-        Switch.destroy('#init');
-        Switch.init('#init');
-        })
-        
+        // setTimeout("Switch.reload('./img/cat3.jpg')", 20000)
+
+        // Switch.img64().then(res =>{ //异步方法
+        //     console.log(res)
+        // })   
         // Switch.destroy('#init');
         // Switch.init('#init');
-        // Switch.destroy('#init');
-        // Switch.init('#init');
+        // })
     </script>
 </body>
-
 </html>

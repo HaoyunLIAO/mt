@@ -491,6 +491,7 @@
         //获得上传的图片尺寸来判断宽高哪一个更大
         //用于获得上传图片的尺寸
         var i = new Image();
+        console.log(imgData)
         i.src = imgData
         i.onload = function (e) {
             div.setAttribute('attribute', (i.width / i.height).toFixed(2))
@@ -801,20 +802,30 @@
         return imgUrl
     }
     //应用当前图片的拼图 应该先清除
-    var application = function () {
+    var application = function (url) {
+        console.log(url)
         //confirm弹出框实例  
-        var conf = confirm("确定要应用当前拼图吗？");
-        //显示用户选择的confirm  
-        if (conf == true) {
+        if(url===undefined){
+            var conf = confirm("确定要应用当前拼图吗？");
+            //显示用户选择的confirm  
+            if (conf == true) {
+                var dom = options.root
+                
+                previewUrl().then(res => {
+                    options.imgSrc = res
+                    api.destroy(dom)
+                    api.init(dom)
+                })
+            } else {
+                return
+            }
+        }else{
             var dom = options.root
-            previewUrl().then(res => {
-                options.imgSrc = res
-                api.destroy(dom)
-                api.init(dom)
-            })
-        } else {
-            return
+            options.imgSrc = url
+            api.destroy(dom)
+            api.init(dom)
         }
+      
     }
 
     //暴露在外面的接口
@@ -826,18 +837,6 @@
             }
             return this;
         },
-        //load 清除
-        // listen: function listen(elem) {
-        //     if (typeof elem === 'string') {
-        //         var elems = document.querySelectorAll(elem),
-        //             i = elems.length;
-        //         while (i--) {
-        //             listen(elems[i]);
-        //         }
-        //         return
-        //     }
-        //     return this;
-        // },
         //先生成dom 再绑定事件
         init: function init(elem) {
             if (typeof elem === 'string') {
@@ -868,10 +867,75 @@
             divAll.appendChild(divCenter)
             divAll.appendChild(divFooter)
             elem.appendChild(divAll)
+            var timer;
             document.getElementById('file').addEventListener('change', changepic)
+            var box  = document.createElement('div')
+            box.id = 'box'
+            box.innerText = '请选择类型'
+          
+            divLeft.appendChild(box)
+            var menu = document.createElement('div')
+            menu.id = 'down'
+            var ul = document.createElement('ul')
+            var li1 = document.createElement('li')
+            li1.innerText = '普通拼图'
+            var li2 = document.createElement('li')
+            li2.innerText = '海报拼图'
+            ul.appendChild(li1)
+            ul.appendChild(li2)
+            menu.appendChild(ul)
+            divLeft.appendChild(menu)
+
+            box.onclick = function(){
+                var obox = document.getElementById("box");
+                var odown = document.getElementById("down");
+                var oli = document.querySelectorAll("li");
+                clearInterval(timer);
+                // timer = setInterval(function(){
+                    odown.style.display = "block";
+                // },300)
+                ///选中列表中的某一项并将其呈现在box中,隐藏下拉列表
+                for(var i=0;i<oli.length;i++){
+                    oli[i].n = i;
+                    oli[i].onclick = function(){
+                        obox.innerHTML = this.innerHTML;
+                        odown.style.display = "none";
+                        var type=1 //默认喂普通拼图
+                        if(this.innerHTML=='普通拼图'){
+                            type = 1
+                        }else{
+                            type = 2
+                        }
+                        var obutton = document.querySelectorAll(".moduleButton");
+                        for (var i = obutton.length - 1; i >= 0; i--) { // 一定要倒序，正序是删不干净的，可自行尝试
+                            divLeft.removeChild(obutton[i]);
+                        }
+                        for (let key in options.json) {
+                            if(options.json[key].type ==type){
+                                var button = generateButton(options.json[key], key)
+                                divLeft.appendChild(button)
+                            }
+                        }
+                        var downloadButton = document.createElement('button')
+                        downloadButton.innerText = "下载"
+                        downloadButton.className = "moduleButton"
+                        downloadButton.onclick = download
+                        divLeft.appendChild(downloadButton)
+                        var downloadButton = document.createElement('button')
+                        downloadButton.innerText = "应用图片"
+                        downloadButton.className = "moduleButton"
+                        downloadButton.onclick = function(){
+                            application(undefined)
+                        }
+                        divLeft.appendChild(downloadButton)
+                    }
+                }
+            }
             for (let key in options.json) {
-                var button = generateButton(options.json[key], key)
-                divLeft.appendChild(button)
+                if(options.json[key].type ==1){
+                    var button = generateButton(options.json[key], key)
+                    divLeft.appendChild(button)
+                }
             }
             var downloadButton = document.createElement('button')
             downloadButton.innerText = "下载"
@@ -881,8 +945,11 @@
             var downloadButton = document.createElement('button')
             downloadButton.innerText = "应用图片"
             downloadButton.className = "moduleButton"
-            downloadButton.onclick = application
+            downloadButton.onclick = function(){
+                application(undefined)
+            }
             divLeft.appendChild(downloadButton)
+
             if (options.imgSrc.length != 0) {
                 generateSmallPic(options.imgSrc)
                 // console.log(options)
@@ -905,7 +972,7 @@
             return url
         },
         reload: function reload(url) {//重新加载 可接受其他tab传来的图片，然后解绑/摧毁之前的事件，重新绑定
-            console.log(this)
+            application(url);
         }
     }
     this.Switch = api;
