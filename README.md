@@ -8,9 +8,9 @@
 
 ## 接口：
 > **config:**传入参数用来控制插件  
-
+>    
 >> **可传入参数(options)：**   
-
+>>   
 >> **json:** 传入整个json文件    
 >> **height:** 控制整个插件界面的宽度。字符串，且需要带单位如 20px / 100%    
 >> **width:** 控制整个插件界面的高度。字符串，且需要带单位如 20px / 100%    
@@ -19,45 +19,45 @@
 >> **scale:** 拼图界面整体放大或缩小，默认为1   
 >> **leftWidth:** 左边按钮栏的宽度。字符串，且需要带单位如 20px / 100%   
 >> **imgSrc:** 外界传入图片数据。字符串   
-
+>>   
 >> **例如**   
-
-```
- Switch.config({
-    json: jData,
-    height: '100%',
-    width: '100%',
-    left: '20px',
-    top: '20px',
-    scale: 1,
-    leftWidth: '13%',
-    imgSrc: '',//外界传入图片
-})
-```   
+>>   
+>>   ```
+>>    Switch.config({
+>>       json: jData,
+>>       height: '100%',
+>>       width: '100%',
+>>       left: '20px',
+>>       top: '20px',
+>>       scale: 1,
+>>       leftWidth: '13%',
+>>       imgSrc: '',//外界传入图片
+>>   })
+>>   ```   
 > **init:** 传入dom或者dom的ID来初始化插件   
-
-```
-Switch.init('#init');
-```   
-
+>
+>   ```
+>   Switch.init('#init');
+>   ```   
+>    
 > **destroy:** 传入dom或者dom的ID来摧毁插件  
-
-```
-Switch.destroy('#init');
-```   
-
-
+>   
+>   ```
+>   Switch.destroy('#init');
+>   ```   
+>   
+>   
 > **img64:**  返回当前拼图的base64数据，是一个异步方法 
-
-```
-Switch.img64().then(res =>{ //异步方法
-            console.log(res)
-        })   
-```   
-
+>   
+>   ```
+>   Switch.img64().then(res =>{ //异步方法
+>               console.log(res)
+>           })   
+>   ```   
+>   
 > **reload:** 重加载界面，可传入图片链接用于初始化
-
-```
-Switch.reload('./img/cat3.jpg')
-```  
-
+>   
+>   ```
+>   Switch.reload('./img/cat3.jpg')
+>   ```  
+>   
