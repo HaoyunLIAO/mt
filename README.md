@@ -61,3 +61,38 @@
 >   Switch.reload('./img/cat3.jpg')
 >   ```  
 >   
+
+## JSON文件的格式
+已经将未用到的json数据删除，实际json文件中还存在，以下数据皆需传入   
+```
+ {
+    "id": "1_1",  //type_id
+    "src": "./Template/Template1.png",  //模版上的图片
+    "direction":"upDown", //控制拼图模块的定位方向，模块定位为相对定位。 upDown为垂直拼接，leftRight为水平拼接。
+    "type": "1", //type 为1时，是普通拼图。为2时，是海报拼图。
+    "number": 3,  //有多少拼接模块。与children的数据个数对应。
+    "width":580, //整个拼图模块的宽度
+    "height":390,//整个拼图模块的高度
+    "children": [   //left, top为定位。width,height为宽度高度。
+        {
+            "left": 0,
+            "top": 0,
+            "width": 580,
+            "height": 130,
+        },
+        {
+            "left": 0,
+            "top": 0,
+            "width": 580,
+            "height": 130,
+        },
+        {
+            "left": 0,
+            "top": 0,
+            "width": 580,
+            "height": 130,
+        }
+    ]
+},
+
+```
