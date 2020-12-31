@@ -7,7 +7,7 @@
 ```
 
 ## 接口：
-> **config:**传入参数用来控制插件  
+> **config:** 传入参数用来控制插件  
 >    
 >> **可传入参数(options)：**   
 >>   
@@ -63,7 +63,7 @@
 >   
 
 ## JSON文件的格式
-已经将未用到的json数据删除，实际json文件中还存在，以下数据皆需传入   
+已经将未用到的json数据删除，实际json文件中还存在，以下数据皆需传入。   
 ```
  {
     "id": "1_1",  //type_id
@@ -73,7 +73,7 @@
     "number": 3,  //有多少拼接模块。与children的数据个数对应。
     "width":580, //整个拼图模块的宽度
     "height":390,//整个拼图模块的高度
-    "children": [   //left, top为定位。width,height为宽度高度。
+    "children": [   //left,top为定位。width,height为宽度高度。
         {
             "left": 0,
             "top": 0,
